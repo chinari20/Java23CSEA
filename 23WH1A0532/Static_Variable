@@ -1,0 +1,17 @@
+package practice;
+
+public class Static_Variable {
+	static String classRoomNumber = "DB304";       
+
+	public static void main(String[] args) {
+		Static_Variable object1 = new Static_Variable();
+		Static_Variable object2 = new Static_Variable();
+		object1.classRoomNumber = "newstone304";
+		System.out.println(object1.classRoomNumber);
+		System.out.println(object2.classRoomNumber);
+		
+	}
+	
+
+	
+}
