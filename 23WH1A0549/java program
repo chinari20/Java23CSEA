@@ -1,0 +1,43 @@
+package javapractice;
+
+
+
+public class Staticprogram {
+
+	static String classRoomNumber="DB304";
+
+	static int num1;
+
+	public static void main(String[] args) {
+
+		int num;
+
+		Staticprogram obj1=new Staticprogram();
+
+		Staticprogram obj2=new Staticprogram();
+
+		obj1.classRoomNumber="newstone305";
+
+		System.out.println(Staticprogram.classRoomNumber);
+
+		System.out.println(obj2.classRoomNumber);
+
+		System.out.println(Staticprogram.num1);
+
+		
+
+	}
+
+	public String getAttendance(String rollnum) {
+
+		System.out.println(classRoomNumber);
+
+		
+
+		return rollnum;
+
+	}
+
+
+
+}
