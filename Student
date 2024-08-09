@@ -1,0 +1,17 @@
+package Practice;
+
+public class Student {
+	static String classRoomNumber="DB-304";	
+	public static void main(String[] args) {
+	    String res;
+		
+		res=getAttendance(classRoomNumber);
+		System.out.println(res);
+		
+	}
+	public static String getAttendance(String rollNumber) {
+		
+		return rollNumber;
+	}
+
+}
