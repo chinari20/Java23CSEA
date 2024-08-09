@@ -1,0 +1,72 @@
+package javalab23_530;
+
+
+
+public class objects_java {
+
+
+
+		static String classRoomNumber="DB304"; //static
+
+
+
+
+
+
+
+
+
+
+
+		public static void main (String[] args) {
+
+
+
+				sample_java object1=new sample_java();
+
+
+
+				sample_java object2=new sample_java();
+
+
+
+				object1.classRoomNumber="newStone304";
+
+
+
+				System.out.println(object1.classRoomNumber);
+
+
+
+				System.out.println(object2.classRoomNumber);
+
+
+
+
+
+
+
+
+
+
+	}
+
+
+
+		public String getAttendance(String rollNumber) {   // non-static
+
+
+
+			System.out.println(classRoomNumber);
+
+
+
+			return rollNumber;
+
+
+
+	}
+
+
+
+}
