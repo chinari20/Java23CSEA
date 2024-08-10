@@ -1,0 +1,16 @@
+package javapractice;
+
+public class NonStatic {
+	String classRoomNumber="DB-304";
+
+	public static void main(String[] args) {
+		NonStatic object1=new NonStatic();
+		NonStatic object2=new NonStatic();
+		object1.classRoomNumber="Newstone-308";
+		System.out.println(object1.classRoomNumber);
+		System.out.println(object2.classRoomNumber);
+		
+
+	}
+
+}
