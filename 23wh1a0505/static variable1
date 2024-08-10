@@ -1,0 +1,30 @@
+package Practice;
+
+
+
+public class StaticVariables {
+
+	static int student_mobile_num = 1234567809; //static
+
+	public static void main(String args[]) {
+
+		StaticVariables obj1 = new StaticVariables();
+
+		StaticVariables obj2 = new StaticVariables();
+
+		obj1.student_mobile_num = 123;
+
+		System.out.println(obj1.student_mobile_num);
+
+		System.out.println(obj2.student_mobile_num);
+
+	}
+
+	public int getNo(int student_mobile_num) {
+
+		return student_mobile_num;
+
+	}
+
+
+
