@@ -1,0 +1,16 @@
+package javapractice;
+
+public class StudentMobileNumber {
+	static int mobileNumber=98877;
+
+	public static void main(String[] args) {
+		int result;
+		result=getMobileNumber(mobileNumber);
+		System.out.println(result);
+
+	}
+	public static int getMobileNumber(int phoneNumber) {
+		return phoneNumber;
+	}
+
+}
