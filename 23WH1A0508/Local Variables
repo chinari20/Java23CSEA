@@ -1,0 +1,8 @@
+package javapractice;
+public class variableLocal {
+	public static void main(String args[]) { 
+			int num = 8;    //local variables should be intialized
+
+			System.out.println(num); 
+	}
+}
