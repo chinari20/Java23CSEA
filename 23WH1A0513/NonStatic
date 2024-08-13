@@ -1,0 +1,27 @@
+package Practice;
+
+
+
+public class NonStatic {
+
+	int number = 123;// non static
+
+	public static void main(String args[]) {
+
+		NonStatic obj1 = new NonStatic(); // seperate copy of instance variables
+
+		NonStatic obj2 = new NonStatic();
+
+		System.out.println(obj1.number);
+
+		obj1.number = 321;
+
+		System.out.println(obj1.number);
+
+		System.out.println(obj2.number);
+
+	}
+
+
+
+}
