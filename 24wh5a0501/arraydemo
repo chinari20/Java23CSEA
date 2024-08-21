@@ -1,0 +1,15 @@
+package pack;
+public class Arraydemo {
+	public static void main(String[] args) {
+		int studentarray[]=new int[10];
+		studentarray[0]=501;
+		studentarray[1]=502;
+		studentarray[2]=503;
+		System.out.println(studentarray[0]);
+		System.out.println(studentarray[1]);
+		System.out.println(studentarray[2]);
+		System.out.println(studentarray[3]);
+		System.out.println(studentarray[4]);
+	}
+
+}
