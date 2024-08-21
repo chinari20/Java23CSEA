@@ -1,0 +1,27 @@
+/*to print
+1 
+2 1 2 
+3 2 1 2 3 
+4 3 2 1 2 3 4 
+5 4 3 2 1 2 3 4 5 pattern */
+
+import java.util.Scanner;
+
+public class q4a_pattern1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("enter number of rows: ");
+        int num = sc.nextInt();
+
+        for(int i = 1; i <= num; i++){
+            for(int j = i; j>=1; j--){
+                System.out.print(j + " ");
+            }
+            for(int j = 2; j<=i ;j++){
+                System.out.print(j + " ");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}
