@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class Duplicates {
+	public static void main(String args[]) {
+	    
+	    Scanner scan = new Scanner(System.in);
+
+	    System.out.println("Enter length of Array: ");
+	    int arrLength = scan.nextInt();
+
+	    int[] anArray = new int[arrLength];
+	    System.out.println("Enter the elements of the Array");
+	    for (int i = 0; i < arrLength; i++) {
+	     
+	      anArray[i] = scan.nextInt();
+	    }
+	    for (int i = 0; i < arrLength; i++) {
+		     for(int j=i+1;j<arrLength;j++) {
+		    	 if(anArray[i]==anArray[j]) {
+		    		 System.out.println(anArray[i]);
+		     }
+		      
+		   }
+	    }
+	}
+}
+	   
