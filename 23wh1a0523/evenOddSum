@@ -1,3 +1,4 @@
+//Java SE code that reads a set of integers, and then prints the sum of the even and odd integers separately  (use for loop)
 package assignment;
 import java.util.Scanner;
 public class evenOddSum {
