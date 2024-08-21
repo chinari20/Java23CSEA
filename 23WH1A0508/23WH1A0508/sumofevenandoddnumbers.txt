@@ -1,0 +1,27 @@
+package helloworld;
+
+import java.util.Scanner;
+
+public class SumofEvenAndOddNumbers {
+
+	public static void main(String[] args) {
+		int sumOfEven=0;
+		int sumOfOdd=0;
+		System.out.println("Enter Range");
+		Scanner sc = new Scanner(System.in);
+		int range=sc.nextInt();
+		for(int i=0;i<=range;i++) {
+			if(i%2==0) {
+				sumOfEven=sumOfEven+i;
+			}
+			else {
+				sumOfOdd=sumOfOdd+i;
+				
+			}
+		}
+		System.out.println("The sum of even numbers in the given range is "+sumOfEven);
+		System.out.println("The sum of odd numbers in the given range is "+sumOfOdd);
+		
+	}
+
+}
