@@ -1,0 +1,56 @@
+package java552;
+import java.util.Scanner;
+
+public final class Calculator {
+	public static void main(String[] args){
+	
+	    int num1,num2,choice;
+	    Scanner sc=new Scanner(System.in);
+		System.out.println("Enter a choice\n1.addition\n2.subtraction\n3.multiplication\n4.division\n");
+		choice=sc.nextInt();
+		switch(choice) {
+			case 1:
+				int sum;
+				System.out.println("Enter first number\n");
+				num1=sc.nextInt();
+				System.out.println("Enter second number\n");
+				num2=sc.nextInt();
+				sum=num1+num2;
+				System.out.println("sum is "+sum);
+				break;
+			case 2:
+				int sub;
+				System.out.println("Enter first number\n");
+				num1=sc.nextInt();
+				System.out.println("Enter second number\n");
+				num2=sc.nextInt();
+				sub=num1-num2;
+				System.out.println("sub is "+sub);
+				break;
+			case 3:
+				int mul;
+				System.out.println("Enter first number\n");
+				num1=sc.nextInt();
+				System.out.println("Enter second number\n");
+				num2=sc.nextInt();
+				mul=num1*num2;
+				System.out.println("mul is "+mul);
+				break;
+			case 4:
+				int div;
+				System.out.println("Enter first number\n");
+				num1=sc.nextInt();
+				System.out.println("Enter second number\n");
+				num2=sc.nextInt();
+				div=num1/num2;
+				System.out.println("div is "+div);
+				break;
+			default :
+				System.out.println("Invalid choice");
+				break;
+				}
+			}
+
+
+
+}
