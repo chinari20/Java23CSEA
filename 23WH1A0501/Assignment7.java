@@ -1,0 +1,16 @@
+package CSEA501;
+
+import java.util.Scanner;
+
+public class Assignment7 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the string: ");
+		String str = sc.next();
+		String reverse = "";
+		int index = str.length() - 1;
+		while(index >= 0)reverse += str.substring(index , index-- + 1);
+		if(str.equals(reverse)) System.out.println("Given string is a palindrome");
+		else System.out.println("Given string is not a palindrome");
+	}
+}
