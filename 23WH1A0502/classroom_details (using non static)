@@ -1,0 +1,14 @@
+package program;
+
+public class using_nonstatic_cr {
+	String classroom_number = "DB304";
+	public static void main(String[]args) {
+		using_nonstatic_cr object1 = new using_nonstatic_cr();
+		using_nonstatic_cr object2 = new using_nonstatic_cr();
+		object1.classroom_number ="Newstone_304";
+		System.out.println(object1.classroom_number);
+		System.out.println(object2.classroom_number);
+		
+
+}
+}
