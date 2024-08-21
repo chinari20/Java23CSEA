@@ -1,0 +1,22 @@
+package program;
+import java.util.Scanner;
+
+public class arthematic {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter the first value");
+		int n1=sc.nextInt(); 
+		System.out.println("enter the second value");
+		int n2 = sc.nextInt();
+		int add = n1+ n2;
+		int sub = n2 -n1;
+		int mult = n1 *n2;
+		int div = n2/n1;
+		System.out.println("the sum is:"+ add);
+		System.out.println("the diff is:"+ sub);
+		System.out.println("the product is:"+ mult);
+		System.out.println("the quotient is:"+ div);
+	} 
+
+
+}
