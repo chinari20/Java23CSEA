@@ -1,0 +1,40 @@
+import java.util.*;
+public class activity1 {
+	public static void main(String[] args) {
+		int number_1,number_2;
+		char choice,op;
+		Scanner scan = new Scanner(System.in);
+		do {
+			System.out.print("Enter your choice:");
+			choice = scan.next().charAt(0);
+			System.out.print("Enter the num1: ");
+			number_1 = scan.nextInt();
+			System.out.print("Enter the num2: ");
+			number_2 = scan.nextInt();
+				
+			switch(choice) {
+			case '+':
+				System.out.println(number_1+number_2);
+				break;
+			case '-':
+				System.out.println(number_1-number_2);
+				break;
+			case '*':
+				System.out.println(number_1*number_2);
+				break;
+			case '/':
+				System.out.println(number_1/number_2);
+				break;
+			case '%':
+				System.out.println(number_1%number_2);
+				break;	
+			default:
+				System.out.println("Invalid operation");
+				
+			}
+			System.out.println("if you want to continue enter Yes or No:");
+			op = scan.next().charAt(0);
+		}while(op=='Y');
+		System.out.println("code successfully completed");
+	}
+}
