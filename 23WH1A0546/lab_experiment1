@@ -1,53 +1,24 @@
 package javapratice;
-
 class Person{
-
 	static String name;
-
 	static int age;
-
 	public void show() {
-
 		System.out.println(name+":"+age);
-
 	}
-
 	public static String marks(String rank) {
-
 		return rank;
 
-		
-
 	}
-
 }
-
-
-
 public class Demo {
-
 	public static void main(String arguments[]) {
-
 		Person obj1=new Person();
-
 		Person obj2=new Person();
-
 		obj1.name="vaishnavi";
-
 		Person.age=18;
-
 		obj2.name="sita";
-
 		obj1.show();
-
 		obj2.show();
-
-		
-
-		
-
-		
-
 	}
 
 }
