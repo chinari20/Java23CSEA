@@ -1,1 +1,33 @@
-
+import java.util.*;
+public class Main{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        char option;
+        do{
+        System.out.println("Enter first operand: ");
+        long operand1 = sc.nextLong();
+        System.out.println("Enter second operand: ");
+        long operand2 = sc.nextLong();
+        System.out.println("Enter operator: ");
+        char operator = sc.next().charAt(0);
+        switch(operator){
+            case '+': System.out.print(operand1+operand2);
+                      System.out.println();
+                      break;
+            case '-': System.out.print(operand1-operand2);
+                      System.out.println();
+                      break;
+            case '*': System.out.print(operand1*operand2);
+                      System.out.println();
+                      break;
+            case '/': System.out.print(operand1/operand2);
+                      System.out.println();
+                      break;
+            default : System.exit(0);
+                      break;
+        }
+        System.out.println("Do you want to continue? ");
+        option = sc.next().charAt(0);
+        }while(option != 'n'&&option != 'N');
+    }
+}
