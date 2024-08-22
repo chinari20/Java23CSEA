@@ -1,0 +1,27 @@
+package Practice;
+
+
+
+public class Static {
+
+	static int number = 123; //Static
+
+	public static void main(String args[]) {
+
+		Static obj1 = new Static();// one copy of instance variables
+
+		Static obj2 = new Static();
+
+		System.out.println(obj1.number);
+
+		obj1.number = 321;
+
+		System.out.println(obj1.number);
+
+		System.out.println(obj2.number);
+
+	}
+
+
+
+}
