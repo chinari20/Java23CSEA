@@ -1,0 +1,27 @@
+package java553;
+import java.util.Scanner;
+public class UpperTrianglePattern {
+
+	public static void main(String[] args) {
+		 Scanner sc = new Scanner(System.in);
+		 int rows,i ,j,k,l ;
+		 System.out.println("enter number of rows");
+		 rows = sc.nextInt();
+		 for(i=1;i<=rows;i++) {
+			 k=i;
+			 for(j=1;j<=i+1;j--) {
+				 if(k!=1) {
+					 System.out.print(k+" ");
+				 	 k -= 1;}
+				 else if(k==1) {
+					 System.out.print(k+" ");
+				 	 break;
+				 }
+			 }
+			 for(l=k+1;l<=i;l++)
+				 System.out.print(l+" ");
+				 
+		 	 System.out.println( );
+		 }
+	}
+}
