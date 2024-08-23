@@ -1,6 +1,6 @@
 package java553;
 import java.util.Scanner;
-public class UpperTrianglePattern {
+public class SymmetricPyramidPattern{
 
 	public static void main(String[] args) {
 		 Scanner sc = new Scanner(System.in);
