@@ -17,7 +17,7 @@ public class Simple_calculator {
 		int choice;
 		do {
 			System.out.print("choose the operation you want!\n");
-			System.out.println("1.Add\t2.Subtract\t3.Multiply\t4.Divide\t5.remainder");
+			System.out.println("1.Add\t2.Subtract\t3.Multiply\t4.Divide\t5.remainder\t6.exit");
 
 			choice = sc.nextInt();
 
