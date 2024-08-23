@@ -18,3 +18,15 @@ public class Patterns {
 					
 			}
 	}
+
+Output:
+Enter number of rows: 
+5
+Enter number of columns: 
+5
+5 4 3 2 1 
+4 3 2 1 
+3 2 1 
+2 1 
+1 
+
