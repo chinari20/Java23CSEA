@@ -1,0 +1,21 @@
+import java.util.Scanner;
+public class SumOfEvenandOdd {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the count of numbers: ");
+		int size = sc.nextInt();
+		int num,evenSum = 0,oddSum = 0;
+		System.out.println("Enter the numbers: ");
+		for(int iter = 1 ; iter <= size; iter ++) {
+			num = sc.nextInt();
+			if(num % 2 == 0) {
+				evenSum += num;
+			}
+			else {
+				oddSum += num;
+			}
+		}
+		System.out.printf("The sum of even number: %d\n",evenSum);
+		System.out.printf("The sum of odd number: %d\n",oddSum);
+	}
+}
