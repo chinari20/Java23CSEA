@@ -1,0 +1,34 @@
+package pack;
+import java.util.Scanner;
+public class Elebill {
+
+	public static void main(String[] args) {
+		int old,nw,dif;
+		Scanner scan= new Scanner(System.in);
+		System.out.println("enter the old reading");
+        old=scan.nextInt();
+    	System.out.println("enter the new reading");
+        nw=scan.nextInt();
+        dif=nw-old;
+        System.out.println("difference of old and nw reading:"+dif);
+        if(dif<=50)
+        {
+        System.out.println(dif*1);	
+        }
+        else if(dif<=100)
+        {
+        	System.out.println(dif*2);
+        }
+        else if(dif<=200) {
+        	System.out.println(dif*3);
+        }
+        else if(dif<=400) {
+        	System.out.println(dif*4);
+        }
+        else
+        {
+        	System.out.println(dif*5);
+        }
+}
+
+}
