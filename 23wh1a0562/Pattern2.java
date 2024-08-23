@@ -19,3 +19,12 @@ public class Even_Odd_SUM {
 	}
 
 }
+
+Output:
+Enter the number of integers you want to enter: 
+5
+Enter the numbers: 
+1 2 3 4 5
+Sum of even numbers is: 6
+Sum of Odd numbers is: 9
+
