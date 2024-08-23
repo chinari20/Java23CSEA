@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class simpleCalc {
+	public static void main(String args[]) {
+	    
+	    Scanner scan = new Scanner(System.in);
+	    int choice;
+	    System.out.println("enter two numbers :");
+	    int num1=scan.nextInt();
+	    int num2=scan.nextInt();
+	    do {
+	    	System.out.println("1.Addituion\t2.Subtraction\t3.Multiplication\t4.division");
+	    	System.out.println("enter your choice :");
+	    	choice = scan.nextInt();
+	    	switch(choice) {
+	    	case 1 :
+	    		System.out.println("sum = "+(num1+num2));
+	    		break;
+	    	case 2 :
+	    		System.out.println("subtract = "+Math.abs(num1-num2));
+	    		break;
+	    	case 3 :
+	    		System.out.println("product = "+num1*num2);
+	    		break;
+	    	case 4 :
+	    		System.out.println("quotient = "+num1/num2);
+	    		break;
+	    	case 5 :
+	    		System.exit(0);
+	    	default :
+	    		System.out.println("Invalid valid choice");	    	
+	    	}
+	    }while(true);
+
+}
+}
