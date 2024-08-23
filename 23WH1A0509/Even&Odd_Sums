@@ -1,0 +1,31 @@
+package Progammes;
+import java.util.Scanner;
+
+public class EvenOdd_Sum {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int evensum = 0 ;
+		int oddsum = 0;
+		
+		System.out.print("Enter the number of intergers:");
+		int num = sc.nextInt();
+		
+		System.out.println("Enter the numbers:");
+		int numb=0;
+		for(int i = 0;i<num;i++) {
+			numb = sc.nextInt();
+			if (numb%2 == 0) {
+				evensum += numb;
+			}
+			else {
+				oddsum += numb;
+			}
+		}
+		
+		System.out.println("The sum of even :" + evensum);
+		System.out.println("The sum of odd :" + oddsum);
+		
+		sc.close();
+	}
+}
