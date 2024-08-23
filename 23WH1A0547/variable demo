@@ -1,0 +1,25 @@
+public class VariablesDemo {
+
+  String classRoomNumber = "DB305" ; 
+
+ public static void main(String[] args) {
+
+// creating objects
+
+	 VariablesDemo object1 = new VariablesDemo();
+
+	 VariablesDemo object2 = new VariablesDemo();
+
+//Assigning Another value to classRoomNumber
+
+	 object1.classRoomNumber = "newblock204" ;
+
+	 System.out.println(object1.classRoomNumber);
+
+	 System.out.println(object2.classRoomNumber);
+
+	 }
+
+
+
+}
