@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class PowerBill {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the old bill reading: ");
+		int oldReading = sc.nextInt();
+		System.out.println("Enter the current bill reading: ");
+		int currentReading = sc.nextInt();
+		int Reading = currentReading - oldReading;
+		int rate1 = 1;
+		int rate2 = 2;
+		int rate3 = 3;
+		int rate4 = 4;
+		int rate5 = 5;
+		if(Reading <= 50) {
+
+			System.out.println("total amount = " + (Reading) * rate1);
+
+		}else if(Reading <= 100) {
+
+			System.out.println("total amount = " + (50 * rate1 + (Reading - 50) * rate2));
+
+		}else if(Reading <= 200) {
+
+			System.out.println("total amount = " + (50 * rate1 + 50 * rate2 + (Reading - 100) * rate3));
+
+		}else if(Reading <= 400) {
+
+			System.out.println("total amount = " + (50 * rate1 + 50 * rate2 + 100 * rate3 + (Reading - 200) * rate4));
+
+		}else if(Reading > 400) {
+
+			System.out.println("total amount = " + (50 * rate1 + 50 * rate2 + 100 * rate3 + 200 * rate4 + (Reading - 400) * rate5));
+
+		}
+		System.out.println();
+
+	}
+}
