@@ -1,0 +1,24 @@
+import java.util.*;
+public class SumOfEvenAndOdd {
+
+	public static void main(String args[]) {
+		Scanner sc = new Scanner(System.in);
+		int arr[] = new int[8];
+		int even=0,odd=0,i;
+		for(i=0;i<8;i++) {
+			arr[i] = sc.nextInt();
+		}
+		for(i=0;i<8;i++) {
+			if (arr[i]%2==0) {
+				even+=arr[i];
+			}
+			else {
+				odd+=arr[i];
+			}
+		}
+		System.out.println("The sum of even numbers is:" + even);
+		System.out.println("The sum of odd number is:" + odd);
+		sc.close();
+	}
+
+}
