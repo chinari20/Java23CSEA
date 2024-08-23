@@ -1,4 +1,4 @@
-package amulya;
+package kantasree;
 import java.util.Scanner;
 
 public class Numberpattern {
