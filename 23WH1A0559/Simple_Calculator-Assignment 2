@@ -1,0 +1,46 @@
+package java0559;
+import java.util.Scanner;
+public class SimpleCalculator {
+	public static void main(String[] args) {
+	Scanner sc = new Scanner(System.in);
+	int choice;
+	do {
+		System.out.println("Enter two numbers:");
+		int a = sc.nextInt();
+		int b = sc.nextInt();
+		System.out.println("Choose the option:");
+		System.out.println("1.Add\t2.Subtract\t3.Multiply\t4.Divide\t5.Exit");
+		choice = sc.nextInt();
+		switch(choice){
+		case 1:
+			int add = a+b;
+			System.out.println("Result:"+add);
+			break;
+		case 2:
+			int subtract = a-b;
+			System.out.println("Result:"+subtract);
+			break;
+		case 3:
+			int multiply = a*b;
+			System.out.println("Result:"+multiply);
+			break;
+		case 4:
+			if(b!=0) {
+			int divide = a/b;
+			System.out.println("Result:"+divide);
+			} else {
+				System.out.println("Division by Zero is not allowed");	
+			}
+			break;
+		case 5:
+			System.out.println("Exit");
+			break;
+		default:
+			System.out.println("Invalid Input.Enter Valid Input");
+		
+			
+		}
+	}while(choice !=5);
+	sc.close();
+	}
+}
