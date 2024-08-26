@@ -18,17 +18,5 @@ public class NumbersPattern{
 			}
 			System.out.println();
 		}
-		for (i = rows - 1 ; i > 0; i-- ){
-			for (j = 1 ; j <= rows - i; j++ ){
-				System.out.print(" ");
-			}
-			for (k = i ; k >= 1; k-- ){
-				System.out.print(k);
-			}
-			for (l = 2 ; l <= i; l++){
-				System.out.print(l);
-			}
-			System.out.println();
-		}
 	}
 }
