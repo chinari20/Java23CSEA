@@ -1,29 +1,27 @@
 import java.util.*;
 public class Pattern2 {
     public static void main(String args[]){
-        Scanner sc = new Scanner(System.in);
-        long n = sc.nextLong();
-      
-      // for the first half of the pyramid
-      
-        for(int row = 0; row < n; row++){
-            for(int col = 0; col < n - row - 1; col++){
+       Scanner sc = new Scanner(System.in);
+        int noOfRows = sc.nextInt();
+        
+        // for the first half of the pyramid
+        for(int i = 1; i <= noOfRows; i++){
+            for(int j = 1; j <= noOfRows - i; j++){
                 System.out.print(" ");
             }
-            for(int col = 0; col < 2 * row + 1; col++){
-                System.out.print("*");
+            for(int k = 1; k <= i; k++){
+                System.out.print("* ");
             }
             System.out.println();
         }
 
-    // for the second half of the pyramid
-      
-        for(int row = 1; row < n; row++){
-            for(int col = 0; col < row ; col++){
+        // for the second half of the pyramid
+        for(int i = noOfRows - 1; i >= 1; i--){
+            for(int j = 1; j <= noOfRows - i; j++){
                 System.out.print(" ");
             }
-            for(int col = 0; col < (n * 2) - (2 * row + 1); col++){
-                System.out.print("*");
+            for(int k = 1; k <= i; k++){
+                System.out.print("* ");
             }
             System.out.println();
         }
