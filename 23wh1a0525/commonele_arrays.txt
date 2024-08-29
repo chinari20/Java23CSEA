@@ -1,0 +1,14 @@
+import java.util.*;
+class commonele{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int arr1[] = new int[]{1,2,3,4,5};
+        int arr2[] = new int[]{4,3,7,9,2};
+        for(int i = 0;i<5;i++){
+            for(int j = 0;j<5;j++){
+                if (arr1[i]==arr2[j]){
+                    System.out.println(arr1[i]);}
+                }
+            }
+            }
+        }
