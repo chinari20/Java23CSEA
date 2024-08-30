@@ -1,4 +1,4 @@
-//Java program to find common elements between two arrays (string values)
+//Java program to find common elements between two arrays 
 
 package assignment;
 import java.util.Scanner;
