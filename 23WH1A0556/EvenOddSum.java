@@ -1,0 +1,26 @@
+package JAVA556;
+import java.util.Scanner;
+public class EvenOddSum {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter any num:");
+		int num = sc.nextInt();
+		int i,sum=0, Evensum =0,Oddsum =0;
+		
+		for(i=0;i<=num;i++) {
+			if(i%2==0) {
+				Evensum += i;
+			}
+			else {
+				Oddsum+=i;
+			}
+					
+			
+		}
+		
+System.out.println("Even Sum is:" + Evensum);
+System.out.println("Odd sum is:" +Oddsum);
+	}
+
+}
