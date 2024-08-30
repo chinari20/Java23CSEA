@@ -1,0 +1,36 @@
+import java.util.*;
+public class DiamondPattern{
+	public static void main(String arg[])
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter number of rows:");
+		int row=sc.nextInt();
+		int i,j;
+		for(i=0;i<row;i++)
+		{
+			for(j=0;j<row-i-1;j++)
+			{
+				System.out.print(" ");
+			}
+			for(j=0;j<=i;j++)
+			{
+				System.out.print("* ");
+			}
+			System.out.println();
+		
+		}
+		for(i=0;i<row-1;i++)
+		{
+		    for(j=0;j<=i;j++)
+			{
+				System.out.print(" ");
+			}
+			for(j=0;j<row-i-1;j++)
+			{
+				System.out.print("* ");
+			}
+
+			System.out.println();
+		}
+	}
+}
