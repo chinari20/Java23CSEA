@@ -1,0 +1,54 @@
+package cse_23WH1A0514;
+		import java.util.Scanner;
+
+		public class BasicCommonElements {
+		    public static void main(String[] args) {
+		        Scanner scanner = new Scanner(System.in);
+
+		        // Read the size and elements of the first array
+		        System.out.println("Enter the number of elements in the first array:");
+		        int size1 = scanner.nextInt();
+		        scanner.nextLine(); // Consume newline
+
+		        String[] array1 = new String[size1];
+		        System.out.println("Enter the elements of the first array:");
+		        for (int i = 0; i < size1; i++) {
+		            array1[i] = scanner.nextLine();
+		        }
+
+		        // Read the size and elements of the second array
+		        System.out.println("Enter the number of elements in the second array:");
+		        int size2 = scanner.nextInt();
+		        scanner.nextLine(); // Consume newline
+
+		        String[] array2 = new String[size2];
+		        System.out.println("Enter the elements of the second array:");
+		        for (int i = 0; i < size2; i++) {
+		            array2[i] = scanner.nextLine();
+		        }
+
+		        // Find common elements
+		        System.out.println("Common elements between the two arrays are:");
+		        findCommonElements(array1, array2);
+
+		        scanner.close();
+		    }
+
+		    // Function to find common elements between two arrays
+		    public static void findCommonElements(String[] array1, String[] array2) {
+		        // Loop through each element of the first array
+		        for (int i = 0; i < array1.length; i++) {
+		            // Loop through each element of the second array
+		            for (int j = 0; j < array2.length; j++) {
+		                // Check if the current elements of both arrays match
+		                if (array1[i].equals(array2[j])) {
+		                    System.out.println(array1[i]);
+		                    break; // Exit the inner loop once a match is found
+		                }
+		            }
+		        }
+		    }
+		
+
+
+	}
