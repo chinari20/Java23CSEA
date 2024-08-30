@@ -1,0 +1,36 @@
+package java_553;
+import java.util.Scanner;
+public class Multiplication_ofMatrices {
+
+	public static void main(String[] args) {
+		 Scanner s = new Scanner(System.in);
+		 int [][]mat_a = new int[3][3];
+		 int [][]mat_b = new int[3][3];
+		 int [][]mat_res = new int[3][3];
+		 int i,j,k,product;
+		 for(i=0;i<3;i++) {
+			 for(j=0;j<3;j++) {
+				 System.out.println("enter a number for mat A: ");
+				 mat_a[i][j]= s.nextInt();
+				 System.out.println("enter element for mat B: ");
+				 mat_b[i][j] = s.nextInt();
+			 }
+		 }
+		 
+		 for(i=0;i<3;i++) {
+			 for(j=0;j<3;j++) {
+				 product=0;
+				for(k=0;k<3;k++) {
+					product += (mat_a[i][k] * mat_b[k][i]);
+				}
+				mat_res[i][j] = product;
+			 }
+		 }
+		 
+		 for(i=0;i<3;i++) {
+			 for(j=0;j<3;j++) {
+		 System.out.print(mat_res[i][j] + "  ");}
+			 System.out.println();
+		 }	}
+
+}
