@@ -1,0 +1,24 @@
+package practicejava;
+import java.util.Scanner;
+
+public class Arrayduplicate {
+	public static void main(String[] args) {
+		Scanner sc= new Scanner (System.in);
+		int arr[]=new int[10];
+		int i;
+		System.out.println("enter the size of array");
+		int n=sc.nextInt();
+		System.out.println("enter the values of size "+n);
+		for(i=0;i<n;i++) {
+			if(sc.hasNext()) {
+				arr[i]=sc.nextInt();
+			}
+		}
+		for(i=1;i<n;i++) {
+			if(arr[i]==arr[i-1]) {
+				System.out.println(arr[i]);
+				break;
+			}
+		}
+	}
+}
