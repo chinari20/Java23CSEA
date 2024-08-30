@@ -1,42 +1,82 @@
-package java_practice;
-
-import java.util.Scanner;
+package java554;
+import java.util.Scanner; 
 
 public class Calculator {
 
 	public static void main(String[] args) {
-		Scanner sc=new Scanner(System.in);
-		System.out.println("enter two integers");
-		int num1=sc.nextInt();
-		int num2=sc.nextInt();
-		System.out.println("1.addition,2.substraction,3.multiplication,4.division");
-		System.out.println("enter your choice");
-		int choice=sc.nextInt();
-		switch(choice) {
-		case 1:
-			int sum=num1+num2;
-			System.out.println("the sum of numbers:"+sum);
-			break;
-		case 2:
-			int diff=num1-num2;
-			System.out.println("the substraction of numbers:"+diff);
-			break;
-		case 3:
-			int pro=num1*num2;
-			System.out.println("the multiplicaton of numbers:"+pro);
-			break;
-		case 4:
-			int div=num1/num2;
-			System.out.println("the division of numbers:"+div);
-			break;
-			
-			
-			
-			
-		}
-		
-		// TODO Auto-generated method stub
 
-	}
+		Scanner sc = new Scanner(System.in);
+
+	    System.out.println("Enter value of num1 :");
+
+	    int num1 = sc.nextInt();
+
+
+
+	    System.out.println("Enter value of num2 :");
+
+	    int num2 = sc.nextInt();
+
+	    System.out.println("Enter your choice :");
+
+		System.out.println("1.Addition");
+
+		System.out.println("2.Subtraction");
+
+		System.out.println("3.multiplication");
+
+		System.out.println("4.division");
+
+	    int result;
+
+		int operator = sc.nextInt();
+
+		
+
+	    switch(operator) {
+
+	    case 1:
+
+	    	result = num1+num2;
+
+	    	System.out.println(result);
+
+	        break;
+
+	    case 2:
+
+	    	result = num1-num2;
+
+	    	System.out.println(result);
+
+	    	break;
+
+	    case 3:
+
+	    	result = num1*num2;
+
+	    	System.out.println(result);
+
+	    	break;
+
+	    case 4:
+
+	    	result = num1/num2;
+
+	    	System.out.println(result);
+
+	    	break;
+
+	    default:
+
+	    	System.out.println("invalid");
+
+	    	
+
+	    }
+
+	           
+
+	    }
 
 }
