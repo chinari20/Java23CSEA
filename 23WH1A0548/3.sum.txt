@@ -1,0 +1,29 @@
+package java_548;
+import java.util.*;
+	public class sum_even_odd {
+		public static void main(String args[]) 
+		{
+			Scanner sc = new Scanner(System.in);
+			int num;
+			System.out.println("Enter number of elements");
+			num = sc.nextInt();
+			int arr[] = new int[num];
+			System.out.println("Enter the nums");
+			for(int i = 0; i < num ; i++) {
+				arr[i] = sc.nextInt();
+			}
+			System.out.println("Even numbers");
+			for(int i = 0; i < num ; i++) {
+				if (arr[i] % 2 == 0) {
+					System.out.println(arr[i] + " ");
+				}
+			}
+			System.out.println("Odd numbers");
+			for(int i = 0; i < num ; i++) {
+				if (arr[i] % 2 != 0) {
+					System.out.println(arr[i] + " ");
+				}
+			}
+		}
+
+	}
