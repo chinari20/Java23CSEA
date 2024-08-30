@@ -1,0 +1,69 @@
+package javapractiucedemo;
+
+
+
+import java.util.Scanner;
+
+
+
+public class Calsio {
+
+
+
+	public static void main(String[] args) {
+
+		Scanner sc= new Scanner(System.in);
+
+		System.out.println("enter the num");
+
+		int num1=sc.nextInt();
+
+		System.out.println("enter the num");
+
+		int num2=sc.nextInt();
+
+		System.out.println("1.addition\n2.subtraction\n3.multiplication\n4.division\n5.remainder");
+
+        System.out.println("enter the choice");
+
+        int ch=sc.nextInt();
+
+		
+
+        switch(ch) {
+
+        case 1:System.out.println("add is"+(num1+num2));
+
+        	break;
+
+        case 2:System.out.println("sub is"+(num1-num2));
+
+            break;
+
+        
+
+        case 3:System.out.println("mul is"+(num1*num2));
+
+        	break;
+
+        case 4:System.out.println("div is"+(num1/num2));
+
+    		break;
+
+        case 5:System.out.println("remainder is"+(num1%num2));
+
+        	break;
+
+        default:System.out.println("invalid");
+
+        }
+
+        sc.close();
+
+
+
+	}
+
+
+
+}
