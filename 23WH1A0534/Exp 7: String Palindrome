@@ -1,0 +1,23 @@
+package programs;
+import java.util.*;
+public class StringPalindrome {
+	public static void main(String args[]) {
+		String word;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter a word");
+		word = sc.next();
+		String rev = "";
+		int i,len;
+		len = word.length();
+		for(i = len-1; i >= 0; i--) {
+			rev += word.charAt(i);
+		}
+		if (rev.equals(word)) {
+			System.out.println("Enter string is a palindrome");
+		}
+		else {
+			System.out.println("Enter string is not a palindrome");
+		}
+	}
+
+}
