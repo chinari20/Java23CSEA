@@ -1,0 +1,38 @@
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner scanner = new Scanner(System.in);
+	    System.out.println("Enter the size of the array: ");
+	    int size = scanner.nextInt();
+	    int[] array = new int[size];
+	    int i,j;
+	    System.out.println("Enter the array elements: ");
+	    for(i=0;i<size;i++)
+	    {
+	        array[i] = scanner.nextInt();
+	    }
+
+        System.out.println("Duplicate elements in the array:");
+        for (i = 0; i < array.length; i++) {
+            for (j = i + 1; j < array.length; j++) {
+                if (array[i] == array[j]) {
+                    System.out.println(array[i]);
+                    break;
+                }
+            }
+        }
+	  }
+}
+
+Output:
+Enter the size of the array: 
+10
+Enter the array elements: 
+1 2 3 4 5 4 3 2 1 6
+Duplicate elements in the array:
+1
+2
+3
+4
+
