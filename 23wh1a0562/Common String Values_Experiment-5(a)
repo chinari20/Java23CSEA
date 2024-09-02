@@ -1,0 +1,62 @@
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner scanner = new Scanner(System.in);
+	    System.out.println("Enter the size of the first String array: ");
+	    int size1 = scanner.nextInt();
+	    scanner.nextLine();
+	    
+	    String array1[] = new String[size1];
+	    int i;
+	    System.out.println("Enter the First String  elements: ");
+	    for(i=0;i<size1;i++)
+	    {
+	        array1[i] = scanner.nextLine();
+	    }
+	    
+
+        System.out.println("Enter the size of the Second String array: ");
+	    int size2 = scanner.nextInt();
+	    scanner.nextLine();
+	    
+	    String array2[] = new String[size2];
+	    
+	    System.out.println("Enter the Second String  elements: ");
+	    for(i=0;i<size2;i++)
+	    {
+	        array2[i] = scanner.nextLine();
+	    }
+	    System.out.println("The Common String values are: ");
+	    
+	    int j;
+	    for(i=0;i<size1;i++)
+	    {
+	        for(j=0;j<size1;j++)
+	        {
+	            if(array1[i].equals(array2[j]))
+	            {
+	                System.out.print(array1[i] + " ");
+	            }
+	        }
+	        
+	    }
+	    
+	}
+}
+
+Output:
+Enter the size of the first String array: 
+3
+Enter the First String  elements: 
+abc
+def
+ghi
+Enter the size of the Second String array: 
+3
+Enter the Second String  elements: 
+ghi
+abc
+hikh
+The Common String values are: 
+abc ghi 
