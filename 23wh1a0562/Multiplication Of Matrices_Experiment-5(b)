@@ -1,0 +1,75 @@
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner scanner = new Scanner(System.in);
+	    System.out.println("Enter the size of the array1: ");
+	    int size1 = scanner.nextInt();
+	    int size2 = scanner.nextInt();
+	    int array1[][] = new int[size1][size2];
+	    
+	    System.out.println("Enter the size of the array2: ");
+	    int Size1 = scanner.nextInt();
+	    int Size2 = scanner.nextInt();
+	    int array2[][] = new int[Size1][Size2];
+	    
+	    int ResultMatrix[][] = new int[size1][Size2];
+	    int i,j;
+	    System.out.println("Enter the first array elements: ");
+	    for(i=0;i<size1;i++)
+	    {
+	        for(j=0;j<size2;j++)
+	        {
+	            array1[i][j] = scanner.nextInt();
+	        }
+	        
+	    }
+	    System.out.println("Enter the second array elements: ");
+	    for(i=0;i<Size1;i++)
+	    {
+	        for(j=0;j<Size2;j++)
+	        {
+	            array2[i][j] = scanner.nextInt();
+	        }
+	        
+	    }
+	    int k;
+	    
+	    for(i=0;i<size1;i++)
+	    {
+	        for(j=0;j<Size2;j++)
+	        {
+	            ResultMatrix[i][j] = 0;
+	            for(k=0;k<Size1;k++)
+	            {
+	                ResultMatrix[i][j] += array1[i][k] * array2[k][j];
+	            }
+	        }
+	        
+	    }
+	    System.out.println("The resultant Matrix is: ");
+	    for(i=0;i<Size1;i++)
+	    {
+	        for(j=0;j<Size2;j++)
+	        {
+	            System.out.print(ResultMatrix[i][j] + " ");
+	            
+	        }
+	        System.out.println();
+	    }
+	}
+}
+
+
+Output:
+Enter the size of the array1: 
+2 2 
+Enter the size of the array2: 
+2 3 
+Enter the first array elements: 
+1 1 2 2 
+Enter the second array elements: 
+1 1 1 2 2 2
+The resultant Matrix is: 
+3 3 3 
+6 6 6 
