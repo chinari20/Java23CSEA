@@ -1,0 +1,36 @@
+package java0559;
+import java.util.Scanner;
+
+public class CommonElementsInArray {
+	public static void main(String[] args) {
+	 Scanner sc = new Scanner(System.in);
+	 //First Array
+	 System.out.print("Enter the Number of Elements in first Array:");
+	 int n1 = sc.nextInt();
+	 char[] arr1 = new char[n1]; //Declaration of a character Array
+	 System.out.println("Enter the elements of first array:");
+	 for(int i=0;i<n1;i++) {
+		 arr1[i] = sc.next().charAt(0);
+	 }
+	//Second Array
+	 System.out.print("Enter the Number of Elements in second Array:");
+	 int n2 = sc.nextInt();
+	 char[] arr2 = new char[n2];
+	 System.out.println("Enter the elements of second array:");
+	 for(int i=0;i<n2;i++) {
+		 arr2[i] = sc.next().charAt(0);
+	 }
+	 //Now checking common elements in String Array
+	 System.out.println("Common Elements in Character Array is:");
+	 for(int i=0;i<arr1.length;i++) {
+		 for(int j=0;j<arr2.length;j++) {
+			 if(arr1[i]==arr2[j]) {
+				 System.out.println(arr1[i]);
+				 break;
+			 }
+			 
+		 }
+	 }
+	 sc.close();
+	}
+}
