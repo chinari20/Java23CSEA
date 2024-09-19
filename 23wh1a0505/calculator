@@ -1,0 +1,53 @@
+package assignment;
+
+import java.util.Scanner;
+
+public class calculator {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        
+        System.out.print("Enter operator (+, -, *, /): ");
+        char ch = scan.next().charAt(0);
+
+        System.out.print("Enter first number: ");
+        int num1 = scan.nextInt();
+        System.out.print("Enter second number: ");
+        int num2 = scan.nextInt();
+
+        int sum, difference, product;
+        double division;
+       
+        switch (ch) {
+            case '+':
+                sum = num1 + num2;
+                System.out.println("Sum: " + sum);
+                break;
+            case '-':
+                difference = num1 - num2;
+                System.out.println("Difference: " + difference);
+                break;
+            case '*':
+            	
+                product = num1 * num2;
+                System.out.println("Product: " + product);
+                break;
+            case '/':
+            	
+            	
+            	
+                
+                division = (double) num1 / num2; 
+                System.out.println("Division: " + division);
+               
+                break;
+            default:
+                System.out.println("Error: Invalid operator.");
+                break;
+        }
+
+
+        scan.close();
+    }
+}
