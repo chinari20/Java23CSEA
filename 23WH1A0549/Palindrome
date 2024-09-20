@@ -1,0 +1,36 @@
+package alekhya;
+
+import java.util.Scanner;
+
+public class Palindrome {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the string:");
+        String word = sc.nextLine();
+        boolean ans = isPalindrome(word);
+
+        if (ans) {
+            System.out.println("\"" + word + "\" is a palindrome.");
+        } else {
+            System.out.println("\"" + word + "\" is not a palindrome.");
+        }
+
+        sc.close();
+    }
+
+    public static boolean isPalindrome(String word) {
+        String word1 = "";
+        boolean ans = false;
+
+        for (int i = word.length() - 1; i >= 0; i--) {
+            word1 = word1 + word.charAt(i);
+        }
+
+        if (word.equalsIgnoreCase(word1)) {
+            ans = true;
+        }
+
+        return ans;
+    }
+}
