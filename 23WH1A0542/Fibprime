@@ -1,0 +1,40 @@
+package assignment;
+import java.util.Scanner;
+public class Fibprime {
+	public static boolean Isprime(int num){
+		int count=0;
+		for(int i=1;i<=num;i++) {
+			if(num%i==0) {
+				count=count+1;
+			}
+		}
+		if(count==2) {
+			return true;
+			
+		}
+		else {
+			return false;
+		}
+		
+		
+		
+	}
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int range=sc.nextInt();
+		int term1=0,term2=1,nextterm=0;
+		System.out.println(term1);
+		System.out.println(term2);
+		
+		while(nextterm<=range) {
+			if(Isprime(nextterm)) {
+				System.out.println(nextterm);
+				
+				
+			}
+			term1=term2;
+			term2=nextterm;
+			nextterm=term1+term2;
+		}
+	}
+}
