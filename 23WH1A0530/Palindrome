@@ -1,5 +1,6 @@
+package cse_23wh1a0530;
 import java.util.Scanner;
-public class is_palindrome {
+public class Palindrome {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
