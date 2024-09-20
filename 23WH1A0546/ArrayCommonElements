@@ -1,0 +1,44 @@
+package java.info;
+import java.util.*;
+
+public class ArrayCommonElements {
+	public static void main(String arg[])
+	{
+		Scanner sc=new Scanner(System.in);
+		int i,j, size1,size2;
+
+		System.out.println("enter size of array1:");
+		size1=sc.nextInt();
+		System.out.println("enter size of array2:");
+		size2=sc.nextInt();
+		
+		String arr1[]= new String[size1];
+		String arr2[]=new String[size2];
+		System.out.println("enter values into array1:");
+		for(i=0;i<arr1.length;i++)
+		{
+			arr1[i]=sc.next();
+		}
+		System.out.println("enter values into array2:");
+		for(i=0;i<arr2.length;i++)
+		{
+			arr2[i]=sc.next();
+		}
+		
+		System.out.println("The common values are:");
+		for(i=0;i<arr1.length;i++)
+		{
+			for(j=0;j<arr2.length;j++)
+			{
+				if(arr1[i].equals(arr2[j]))
+				{
+					System.out.println(arr2[j]+" ");
+				}
+			}
+		}
+		sc.close();
+		
+	}
+	
+
+}
