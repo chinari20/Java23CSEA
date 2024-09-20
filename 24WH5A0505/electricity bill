@@ -1,0 +1,36 @@
+package labpractice;
+import java.util.*;
+public class currentbill  
+{
+	
+   public static void main(String[] args){
+	   int oldreadings,newreadings;
+		try (Scanner scan = new Scanner(System.in)) {
+			System.out.println("enter old readings:");
+			oldreadings=scan.nextInt();
+			System.out.println("enter new readings:");				
+			newreadings=scan.nextInt();
+		}
+		int diff;
+		int bill=0;
+		diff=oldreadings-newreadings;
+		if(diff<50) {
+			bill=diff*1;
+		}
+		else if(diff<100){
+			bill=50*1+(diff-50)*2;
+		}
+		else if(diff<200) {
+			bill=50*1+50*2+(diff-100)*3;
+		}
+		else if(diff<300) {
+			bill=50*1+50*2+50*3+(diff-200)*4;
+		}
+		else if(diff<400) {
+			bill=50*1+50*2+50*3+50*3+(diff-300)*5;
+		}
+		System.out.println("total current bill:"+bill);
+
+
+}
+}
