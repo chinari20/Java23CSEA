@@ -1,0 +1,19 @@
+import java.util.*;
+
+public class checkPalindrome {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String n = sc.next();
+		int i,j,flag=0;
+		for(i = 0,j = n.length()-1;i < j; i++,j--) {
+			if (n.charAt(i)!= n.charAt(j)) {
+				System.out.println("False");
+				flag = 1;
+				break;
+			}
+		}
+		if(flag==0) {
+			System.out.println("True");
+		}
+	}
+}
