@@ -1,0 +1,38 @@
+package java_labexps;
+import java.util.Scanner;
+
+public class Prime_Fibonacci {
+	
+	public static boolean is_prime(int next_term) {
+		int count = 0;
+		for(int i = 1 ; i <= next_term ; i++) {
+			if(next_term % i == 0)
+				count = count + 1;
+		}
+		if(count == 2)
+			return true;
+		else
+			return false;
+	}
+
+	public static void main(String[] args) {
+		System.out.println("enter the number which will act like a range: ");
+		Scanner sc = new Scanner(System.in);
+		int number = sc.nextInt(); 
+		
+		int term1 = 0;
+		int term2 = 1;
+		int next_term = term1 + term2;
+		for(int i = 2 ; i < number ; i++) {
+			next_term = term1 + term2;
+			if(is_prime(next_term) == true && next_term < number) {
+				System.out.println(next_term);
+			}
+			term1 = term2;
+			term2 = next_term;
+		}
+		
+		sc.close();
+	} 
+
+}
