@@ -32,6 +32,6 @@ public class primeFibonacci {
         System.out.print("Enter a value for n: ");
         int n = scanner.nextInt(); 
         printPrimeFibonacci(n); 
-        scanner.close(); // Always good practice to close the scanner
+        scanner.close(); 
     }
 }
