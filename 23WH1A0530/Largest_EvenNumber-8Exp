@@ -1,1 +1,49 @@
+package cse_23wh1a0530;
+import java.util.*;
+
+public class LargestEvenNumbers {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        
+       
+        char[] ch = in.nextLine().toCharArray();
+
+        Set<Integer> digits = new HashSet<>();
+
+        
+        for (char c : ch) {
+            if (Character.isDigit(c)) {
+                digits.add(Character.getNumericValue(c));
+            }
+        }
+
+       
+        List<Integer> digitList = new ArrayList<>(digits);
+        Collections.sort(digitList, Collections.reverseOrder());
+
+        
+        Integer evenDigit = null;
+        for (int i = digitList.size() - 1; i >= 0; i--) {
+            if (digitList.get(i) % 2 == 0) {
+                evenDigit = digitList.remove(i);
+                break;
+            }
+        }
+
+        
+        if (evenDigit == null) {
+            System.out.print("-1");
+        } else {
+           
+            for (Integer digit : digitList) {
+                System.out.print(digit);
+            }
+            System.out.print(evenDigit); 
+        }
+        
+        
+        in.close();
+    }
+}
 
