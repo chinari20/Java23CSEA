@@ -1,0 +1,53 @@
+package java0559;
+import java.util.*;
+
+public class MultiplicationOfMatrices {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int row1,col1,row2,col2;
+		System.out.print("Enter the Number of rows in first matrix :");
+		 row1 = sc.nextInt();
+		System.out.print("Enter the Number of columns in first matrix:");
+		 col1 = sc.nextInt();
+		 System.out.print("Enter the Number of rows in Second matrix :");
+		 row2 = sc.nextInt();
+		System.out.print("Enter the Number of columns in Second matrix:");
+		 col2 = sc.nextInt();
+		if(col1 != row2) {
+			System.out.println("Multiplication of 2 Matrices is not possible!");
+		}
+		else {
+			//Declaration of 2D Array
+			int[][] a = new int[row1][col1];
+			int[][] b = new int[row2][col2];
+			int[][] result = new int[row1][col2];//This matrix to store result
+			//Read values of first matrix
+			System.out.println("Enter values of first Matrix:");
+			for(int i=0;i<row1;i++) {
+				for(int j=0;j<col1;j++) {
+					a[i][j] = sc.nextInt();
+				}
+			}
+		//Read values of Second matrix
+			System.out.println("Enter values of Second Matrix:");
+			for(int i=0;i<row2;i++) {
+				for(int j=0;j<col2;j++) {
+					b[i][j] = sc.nextInt();
+				}
+			}
+		 System.out.println("Matrix Multiplication is:\n");
+		  for(int i=0;i<row1;i++) {
+			  for(int j=0;j<col2;j++ ) {
+				  result[i][j] = 0;  
+				  for(int k=0;k<col1;k++) {
+					result[i][j] = result[i][j] + a[i][k]*b[k][j]; 
+			  }
+	     System.out.print(result[i][j]+" ");
+					
+		  } System.out.println();
+        }
+          
+           
+	}
+  }
+}
