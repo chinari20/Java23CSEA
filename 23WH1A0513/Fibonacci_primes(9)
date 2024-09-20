@@ -1,0 +1,51 @@
+package Java;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+
+public class get_ Fibonacci_primes {
+	public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+        List<Integer> primeFib = new ArrayList<>();
+        for (int i = 1; i <= n; i++) {
+            if (isFibonacci(i) && isPrime(i)) {
+                primeFib.add(i);
+            }
+        }
+        System.out.println("Prime Fibonacci numbers: " + primeFib);
+    }
+
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        if (num == 2) {
+            return true;
+        }
+        if (num % 2 == 0) {
+            return false;
+        }
+        for (int i = 3; i * i <= num; i += 2) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isFibonacci(int num) {
+        int fib1 = 0, fib2 = 1;
+        while (true) {
+            int fib = fib1 + fib2;
+            if (fib >= num) {
+                return fib == num;
+            }
+            fib1 = fib2;
+            fib2 = fib;
+        }
+    }
+	
+	
+}
