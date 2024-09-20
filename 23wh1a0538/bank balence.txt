@@ -1,0 +1,33 @@
+import java.util.Scanner;
+class Bank{
+    public static void getbalance(){
+        System.out.println("Bank Transaction");
+    }
+}
+
+class BankA extends Bank{
+    public static void getbalance(){
+        System.out.println("deposited amount 1000");
+    }
+}
+
+class BankB extends Bank{
+    public static void getbalance(){
+        System.out.println("deposited amount 1500");
+    }
+}
+
+public class BankC extends Bank{
+    public static void getbalance(){
+        System.out.println("deposited amount 2000");
+    }
+    public static void main(String[] args){
+        BankA obj1 = new BankA();
+        BankB obj2 = new BankB();
+        BankC obj3 = new BankC();
+        obj1.getbalance();
+        obj2.getbalance();
+        obj3.getbalance();
+       
+    }
+}
