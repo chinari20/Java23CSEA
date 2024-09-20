@@ -1,0 +1,62 @@
+package assignments.java;
+
+import java.util.*;
+
+public class LargestEvenNumber {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+        
+        String largestEven = findLargestEvenNumber(input);
+        
+        System.out.println("Largest even number: " + largestEven);
+        
+        scanner.close();
+    }
+
+    public static String findLargestEvenNumber(String str) {
+        Set<Character> digits = new HashSet<>();
+        
+        // Extract digits and store them in a set to remove duplicates
+        for (char ch : str.toCharArray()) {
+            if (Character.isDigit(ch)) {
+                digits.add(ch);
+            }
+        }
+
+        // Convert set to list and sort in descending order
+        List<Character> sortedDigits = new ArrayList<>(digits);
+        Collections.sort(sortedDigits, Collections.reverseOrder());
+        
+        // Check for an even digit
+        boolean hasEvenDigit = false;
+        StringBuilder largestEvenNumber = new StringBuilder();
+        
+        for (char digit : sortedDigits) {
+            largestEvenNumber.append(digit);
+            if ((digit - '0') % 2 == 0) {
+                hasEvenDigit = true;
+            }
+        }
+        
+        // If no even digit is found, return -1
+        if (!hasEvenDigit) {
+            return "-1";
+        }
+
+        // Find the largest even number by ensuring the last digit is even
+        for (int i = largestEvenNumber.length() - 1; i >= 0; i--) {
+            if ((largestEvenNumber.charAt(i) - '0') % 2 == 0) {
+                // Swap the last digit with the even digit found
+                char evenDigit = largestEvenNumber.charAt(i);
+                largestEvenNumber.deleteCharAt(i);
+                largestEvenNumber.append(evenDigit);
+                break;
+            }
+        }
+
+        return largestEvenNumber.toString();
+    }
+}
