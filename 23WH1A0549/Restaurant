@@ -1,0 +1,67 @@
+class Main {
+    public static void main(String[] args) {
+        Restaurant obj1 = new McDonalds();
+        obj1.name();
+        obj1.menu();
+        double actualPrice1 = 100;
+        System.out.println("Total price is: " + obj1.totalPrice(actualPrice1));
+
+        Restaurant obj2 = new KFC();
+        obj2.name();
+        obj2.menu();
+        double actualPrice2 = 50;
+        System.out.println("Total price is: " + obj2.totalPrice(actualPrice2));
+    }
+}
+
+interface Restaurant {
+    void name();
+    double totalPrice(double actualPrice);
+    void menu();
+}
+
+class McDonalds implements Restaurant {
+    private String name = "MCDONALDS";
+
+
+    public void name() {
+        System.out.println("Restaurant name is: " + name);
+    }
+
+
+    public double totalPrice(double actualPrice) {
+        double tax = actualPrice * 0.06;
+        return actualPrice + tax;
+    }
+
+
+    public void menu() {
+        System.out.println("Menu:");
+        System.out.println("1. Lava Cake");
+        System.out.println("2. Crispy Chicken");
+        System.out.println("3. Chicken Drumsticks");
+    }
+}
+
+class KFC implements Restaurant {
+    private String name = "KFC";
+
+   
+    public void name() {
+        System.out.println("Restaurant name is: " + name);
+    }
+
+ 
+    public double totalPrice(double actualPrice) {
+        double tax = actualPrice * 0.06;
+        return actualPrice + tax;
+    }
+
+   
+    public void menu() {
+        System.out.println("Menu:");
+        System.out.println("1. KFC Burger");
+        System.out.println("2. KFC Chicken");
+        System.out.println("3. KFC Pizza");
+    }
+}
