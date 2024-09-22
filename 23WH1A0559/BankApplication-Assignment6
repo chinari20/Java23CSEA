@@ -1,0 +1,92 @@
+package java0559;
+import java.util.*;
+
+public class BankApplication {
+	static String customerName;
+	static String AadharNumber;
+	static String PanNumber;
+	static int accountNumber = 1;
+	static double balance = 0.0;
+	static Scanner sc = new Scanner(System.in);
+  public static void main(String[] args) {
+	  boolean continueApp = true ;
+	  while(continueApp) {
+		  showMenu();
+		  int choice = sc.nextInt();
+		    sc.nextLine();
+		   switch(choice) {
+		   case 1:
+			   CreateAccount();
+		         break;
+           case 2 :
+        	   CreditAmount();
+           		break;
+       		case 3:
+       			DebitAmount();
+       			break;
+   			case 4:
+   				miniStatement();
+   				break;
+   			case 5:
+   				continueApp = continueprompt();
+   				break;
+   			default:
+   				System.out.println("Invalid option.Enter correct option.");
+			   
+		   }
+	  }
+  }//End of main
+  //Method to display Menu
+  public static void showMenu() {
+	  System.out.print("\n Bank Employee Menu:");
+	  System.out.println("\n1.Account Creation\n2.Credit Amount\n3.Debit Amount\n4.Mini Statement/Balance Enquiry\n5.Exit");
+	  System.out.println("Enter Your Choice:");
+  }
+  //Method to create Account
+  public static void CreateAccount() {
+	  System.out.print("Enter Customer Name:");
+	  customerName = sc.nextLine();
+	  System.out.print("Enter Aadhar Number:");
+	   AadharNumber = sc.nextLine();
+	  System.out.print("Enter PAN Number:");
+	  PanNumber = sc.nextLine();
+	  balance = 0.0;
+	  System.out.print("Account Created Successfully.Account Number:"+accountNumber);
+	  accountNumber++ ;
+  }
+  //Method to Credit Amount
+  public static void CreditAmount(){
+	  System.out.print("Enter Amount to Credit");
+	  double amount = sc.nextDouble();
+	  balance += amount;
+	  System.out.print("Amount Credited Successfully.New Balance:"+balance);
+  }
+  //Method to Debit Amount
+  public static void DebitAmount() {
+	  System.out.print("Enter Amount to Debit:");
+	  double amount = sc.nextDouble();
+	  if(balance >= amount) {
+		  balance -= amount;
+		  System.out.print("Amount Debited Successfully.New Balance:"+balance);
+	  }
+	  else {
+		  System.out.print("Insufficient balance");
+	  }
+	 
+  }
+  //Method for Mini Statement(balance Enquiry)
+  public static void miniStatement() {
+	  System.out.println("customer Name:"+customerName);
+	  System.out.println("Account Balance:"+balance);
+  }
+  //Method to check user want to continue or not
+  public static boolean continueprompt() {
+	  System.out.print("Do you want to continue(y/n)?");
+	  char choice = sc.next().charAt(0);
+	  sc.nextLine();
+	 return (choice =='y' || choice == 'Y');
+	     
+	
+  }
+	
+}
