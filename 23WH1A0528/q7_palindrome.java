@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class is_palindrome {
+public class q7_isplaindrome {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -15,6 +15,13 @@ public class is_palindrome {
 			reverse = ch + reverse;
 		}
 		System.out.println("the reversed string is: " + reverse);
+
+        if(str.equals(reverse)){
+            System.out.println("the given string " + str + " is palindrome");
+        }
+        else{
+            System.out.println("the given string " + str + " is not palindrome");
+        }
 		sc.close();
 	}
 
