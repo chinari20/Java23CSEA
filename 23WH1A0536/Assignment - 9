@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class FibonacciPrime {
+	public static boolean Prime(int num) {
+		int count=0;
+		for(int i=1;i<=num;i++) {
+			if(num%i==0) {
+				count+=1;
+			}
+		}
+		if(count==2) {
+			return true;
+		}
+		return false;}
+	
+	public static void main(String[] args) {
+		Scanner scan=new Scanner(System.in);
+		int n;
+		n=scan.nextInt();
+		int first=0,second=1;
+		int next;
+		for(int i=2;i<=n;i++) {
+			next=first+second;
+			
+			if(next<n && Prime(next)) {
+				System.out.println(next);}
+			
+			first=second;
+			second=next;
+				}
+			}		
+	}
