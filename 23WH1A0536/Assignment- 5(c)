@@ -1,0 +1,30 @@
+import java.util.*;
+public class CoomonStrings
+{
+	public static void main(String args[]) {
+		Scanner sc = new Scanner(System.in);
+		String arr1[] = new String[5];
+		String arr2[] = new String[5];
+		int i,j;
+		System.out.println("Enter elements in array 1");
+		for(i = 0; i < 5; i++) {
+			arr1[i] = sc.next();
+		}
+		System.out.println("Enter elements in array 2");
+		for(i = 0; i < 5; i++) {
+			arr2[i] = sc.next();
+		}
+		System.out.println("Common elements in both arrays are: ");
+		for(i = 0; i < 5 ; i++) 
+		{
+			for(j = 0; j < 5; j++) 
+			{
+				if (arr1[i].equals(arr2[j]) ) 
+				{
+				System.out.print(arr1[i] + " ");
+				}
+			}
+		
+		}
+	}
+}
