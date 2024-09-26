@@ -1,0 +1,30 @@
+public class Main {
+    public static void main(String[] args) {
+        // First half of the pattern
+        int n = 5;  // number of rows for the top half
+        for (int i = 1; i <= n; i++) {
+            // printing spaces
+            for (int j = i; j < n; j++) {
+                System.out.print("  ");
+            }
+            // printing stars
+            for (int j = 1; j <= (2 * i - 1); j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+       
+        // Second half of the pattern
+        for (int i = n - 1; i >= 1; i--) {
+            // printing spaces
+            for (int j = n; j > i; j--) {
+                System.out.print("  ");
+            }
+            // printing stars
+            for (int j = 1; j <= (2 * i - 1); j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+}
