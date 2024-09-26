@@ -1,0 +1,29 @@
+package 553;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
+public class LargestEvenNumber {
+
+	public static void main(String[] args) {
+		 Scanner s = new Scanner(System.in);
+		 String str = s.nextLine();
+		 boolean seen[] = new boolean[10];
+		 List<Integer> digits = new ArrayList<>();
+		 for(char ch:str.toCharArray()) {
+			 if(Character.isDigit(ch)) {
+				 int digit = ch - '0';
+				 seen[digit] = true;
+			 }	 
+		 }
+		 for(int i=0;i<seen.length;i++) {
+			 if(seen[i])
+				 digits.add(i);
+		 }
+		 Collections.sort(digits,Collections.reverseOrder());
+		 Object[] arr = digits.toArray();
+		 System.out.println(arr[0]);
+
+	}
+
+}
