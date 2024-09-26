@@ -1,0 +1,45 @@
+abstract class Shape {
+    int dimension1, dimension2;
+    abstract void printArea();
+}
+
+class Rectangle extends Shape {
+    Rectangle(int length, int breadth) {
+        this.dimension1 = length;
+        this.dimension2 = breadth;
+    }
+    void printArea() {
+        System.out.println("Area of Rectangle: " + (dimension1 * dimension2));
+    }
+}
+
+class Triangle extends Shape {
+    Triangle(int base, int height) {
+        this.dimension1 = base;
+        this.dimension2 = height;
+    }
+    void printArea() {
+        System.out.println("Area of Triangle: " + (0.5 * dimension1 * dimension2));
+    }
+}
+
+class Circle extends Shape {
+    Circle(int radius) {
+        this.dimension1 = radius;
+    }
+    void printArea() {
+        System.out.println("Area of Circle: " + (Math.PI * dimension1 * dimension1));
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape rect = new Rectangle(5, 10);
+        Shape tri = new Triangle(5, 10);
+        Shape circ = new Circle(7);
+        
+        rect.printArea();
+        tri.printArea();
+        circ.printArea();
+    }
+}

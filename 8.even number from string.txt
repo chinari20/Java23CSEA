@@ -1,0 +1,39 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String str = scanner.nextLine();
+        System.out.println("Largest even number: " + largestEvenNumber(str));
+    }
+
+    public static int largestEvenNumber(String str) {
+        Set<Character> digits = new HashSet<>();
+        for (char c : str.toCharArray()) {
+            if (Character.isDigit(c)) {
+                digits.add(c);
+            }
+        }
+
+        List<Integer> evenDigits = new ArrayList<>();
+        for (char digit : digits) {
+            int num = Character.getNumericValue(digit);
+            if (num % 2 == 0) {
+                evenDigits.add(num);
+            }
+        }
+
+        if (evenDigits.isEmpty()) {
+            return -1;
+        }
+
+        Collections.sort(evenDigits, Collections.reverseOrder());
+        int largestEvenNumber = 0;
+        for (int digit : evenDigits) {
+            largestEvenNumber = largestEvenNumber * 10 + digit;
+        }
+
+        return largestEvenNumber;
+    }
+}
