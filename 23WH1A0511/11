@@ -1,0 +1,121 @@
+interface Bank {
+    void createAccount(String accountHolder, String accountType);
+    double creditAmount(double amount);
+    double debitAmount(double amount);
+    void transferAmount(double amount, Bank receiver);
+    void miniStatement();
+    double calculateInterest(double principal, int timeInYears);
+}
+
+class SBI implements Bank {
+    private double balance;
+    private static final double INTEREST_RATE = 0.05;
+
+    public void createAccount(String accountHolder, String accountType) {
+        System.out.println("SBI Account created for: " + accountHolder + " (" + accountType + ")");
+        balance = 0;
+    }
+
+    public double creditAmount(double amount) {
+        balance += amount;
+        System.out.println("Credited " + amount + " to SBI account. New Balance: " + balance);
+        return balance;
+    }
+
+    public double debitAmount(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Debited " + amount + " from SBI account. New Balance: " + balance);
+        } else {
+            System.out.println("Insufficient funds in SBI account.");
+        }
+        return balance;
+    }
+
+    public void transferAmount(double amount, Bank receiver) {
+        if (amount <= balance) {
+            this.debitAmount(amount);
+            receiver.creditAmount(amount);
+            System.out.println("Transferred " + amount + " from SBI account.");
+        } else {
+            System.out.println("Transfer failed. Insufficient funds in SBI account.");
+        }
+    }
+
+    public void miniStatement() {
+        System.out.println("SBI Account Balance: " + balance);
+    }
+
+    public double calculateInterest(double principal, int timeInYears) {
+        return principal * INTEREST_RATE * timeInYears;
+    }
+}
+
+class Axis implements Bank {
+    private double balance;
+    private static final double INTEREST_RATE = 0.06;
+
+    public void createAccount(String accountHolder, String accountType) {
+        System.out.println("Axis Bank Account created for: " + accountHolder + " (" + accountType + ")");
+        balance = 0;
+    }
+
+    public double creditAmount(double amount) {
+        balance += amount;
+        System.out.println("Credited " + amount + " to Axis account. New Balance: " + balance);
+        return balance;
+    }
+
+    public double debitAmount(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Debited " + amount + " from Axis account. New Balance: " + balance);
+        } else {
+            System.out.println("Insufficient funds in Axis account.");
+        }
+        return balance;
+    }
+
+    public void transferAmount(double amount, Bank receiver) {
+        if (amount <= balance) {
+            this.debitAmount(amount);
+            receiver.creditAmount(amount);
+            System.out.println("Transferred " + amount + " from Axis account.");
+        } else {
+            System.out.println("Transfer failed. Insufficient funds in Axis account.");
+        }
+    }
+
+    public void miniStatement() {
+        System.out.println("Axis Account Balance: " + balance);
+    }
+
+    public double calculateInterest(double principal, int timeInYears) {
+        return principal * INTEREST_RATE * timeInYears;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Bank sbi = new SBI();
+        sbi.createAccount("John Doe", "Savings");
+        sbi.creditAmount(5000);
+        sbi.debitAmount(2000);
+        sbi.miniStatement();
+        
+        Bank axis = new Axis();
+        axis.createAccount("Jane Doe", "Current");
+        axis.creditAmount(10000);
+        
+        sbi.transferAmount(1000, axis);
+        
+        sbi.miniStatement();
+        axis.miniStatement();
+        
+        double interestSBI = sbi.calculateInterest(10000, 2);
+        System.out.println("Interest for SBI account for 2 years: " + interestSBI);
+        
+        double interestAxis = axis.calculateInterest(10000, 2);
+        System.out.println("Interest for Axis account for 2 years: " + interestAxis);
+    }
+}
