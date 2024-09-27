@@ -1,0 +1,213 @@
+package javaAssignments;
+import java.util.*;
+
+class Customer{
+	String name;
+	String aadharNo;
+	String panNo;
+	String accountNum;
+	double balance;
+	
+	// constructor
+	public Customer(String name,String aadharNo,String panNo,String accountNum){
+		this.name = name;
+		this.aadharNo = aadharNo;
+		this.panNo = panNo;
+		this.accountNum = accountNum;
+		this.balance = 0;
+	}
+}
+
+
+public class BankApplication6 {
+	public static Scanner sc = new Scanner(System.in);
+	private static Customer[] customers = new Customer[100];
+	private static int customerCount = 0;
+	
+	public static void main(String[] args) {
+		boolean continueBanking = true;
+		
+		while(continueBanking) {
+			System.out.println("\n--- Bank Menu ---");
+            System.out.println("1. Account Creation");
+            System.out.println("2. Credit Amount");
+            System.out.println("3. Debit Amount");
+            System.out.println("4. Mini Statement / Balance Enquiry");
+            System.out.println("5. Transfer Amount");
+            System.out.println("6. Exit");
+            System.out.print("Select an option: ");
+            
+            int choice = sc.nextInt();
+            sc.nextLine();
+            
+            switch(choice) {
+            case 1:
+                createAccount();
+                break;
+            case 2:
+                creditAmount();
+                break;
+            case 3:
+                debitAmount();
+                break;
+            case 4:
+                balanceEnquiry();
+                break;
+            case 5:
+                transferAmount();
+                break;
+            case 6:
+                continueBanking = false;
+                System.out.println("Exiting the bank application. Thank you!");
+                break;
+            default:
+                System.out.println("Invalid option. Please try again.");
+            }
+		}
+		sc.close();
+
+	}
+	
+	
+	// creating an account
+	private static void createAccount() {
+		
+		System.out.println("Enter your name :");
+		String name = sc.next();
+		
+		 System.out.print("Enter Aadhar Number: ");
+	     String aadharNo = sc.next();
+	     
+	        
+	     System.out.print("Enter PAN: ");
+	     String panNo = sc.next();
+	     
+	     String accountNumber = generateAccountNumber();
+	     
+	     customers[customerCount] = new Customer(name, aadharNo, panNo, accountNumber);
+	     System.out.println("Account created successfully! Account Number: " + accountNumber);
+	     customerCount++;
+	}
+	
+	// generating an account
+	private static String generateAccountNumber() {
+		return "AC" +(1000 + customerCount);
+	}
+	
+	// finding the account number
+	private static Customer findCustomer(String accountNum) {
+		for(int customer = 0; customer < customerCount;customer++) {
+			if(customers[customer].accountNum.equals(accountNum)) {
+				return customers[customer];
+			}
+		}
+		return null;
+		
+	}
+	
+	// Balance enquire of the customer
+	private static void balanceEnquiry() {
+		
+		System.out.println("Enter the account number : ");
+		String accNum = sc.next();
+		
+		Customer customer = findCustomer(accNum);
+		
+		
+		if(customer != null) {
+			System.out.println("Current Balance: "+ customer.balance);
+		}
+		
+		else {
+			System.out.println("Account not found");
+		}
+	}
+	
+	//Debit amount from an account
+	private static void debitAmount() {
+		System.out.println("Enter the account number : ");
+		String accNum = sc.next();
+		
+		Customer customer = findCustomer(accNum);
+		
+		
+		if(customer != null) {
+			System.out.print("Enter Amount to Debit: ");
+	        double amount = sc.nextDouble();
+	        sc.nextLine();
+	        
+	        if(amount <= customer.balance) {
+			
+	        	customer.balance -= amount;
+	        	System.out.println("Amount has been debited successfully!");
+	        }
+	        
+	        else {
+	        	System.out.println("Insufficient balance");
+	        }
+	        
+		}
+		
+		else {
+			System.out.println("Account not found");
+		}
+	}
+	
+	// Credit amount in an account
+	private static void creditAmount() {
+		System.out.println("Enter the account number : ");
+		String accNum = sc.nextLine();
+	
+		Customer customer = findCustomer(accNum);
+		
+		if(customer != null) {
+			
+			System.out.print("Enter Amount to Credit: ");
+	        double amount = sc.nextDouble();
+	        sc.nextLine();
+	        customer.balance += amount;
+	        System.out.println("Amount has been debited successfully!");   
+		}
+		
+		else {
+			System.out.println("Account not found");
+		}
+	}
+	
+	// transfer amount from an account to an account
+	private static void transferAmount() {
+		System.out.println("Enter from  account number : ");
+		String fromAccNum = sc.next();
+	
+		Customer fromCustomer = findCustomer(fromAccNum);
+		
+		System.out.println("Enter to account number : ");
+		String toAccNum = sc.next();
+		
+		Customer toCustomer = findCustomer(toAccNum);
+		
+		if(fromCustomer != null) {
+			if(toCustomer != null) {
+				 System.out.println("Enter the amount to be transferred : ");
+				 double amount = sc.nextDouble();
+				 sc.nextLine();
+				 
+				 if(amount <= fromCustomer.balance) {
+					 fromCustomer.balance -= amount;
+					 toCustomer.balance += amount;
+					 System.out.println("Amount has been tranferred successfully");
+				 }
+				 else {
+					 System.out.println("Insufficient balance");
+				 }
+			}
+			else {
+				System.out.println("to account not found");
+			}
+		}
+		else {
+			System.out.println("from account not found");
+		}
+	}
+
+}
