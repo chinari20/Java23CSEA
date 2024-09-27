@@ -1,0 +1,47 @@
+interface Restaurant {
+    void printName();
+    double totalPrice(double price);
+    void menu();
+}
+
+class McDonald implements Restaurant {
+    public void printName() {
+        System.out.println("McDonald");
+    }
+
+    public double totalPrice(double price) {
+        return price + (price * 0.06);
+    }
+
+    public void menu() {
+        System.out.println("1. Big Mac\n2. McChicken\n3. McFlurry");
+    }
+}
+
+class KFC implements Restaurant {
+    public void printName() {
+        System.out.println("KFC");
+    }
+
+    public double totalPrice(double price) {
+        return price + (price * 0.06);
+    }
+
+    public void menu() {
+        System.out.println("1. Zinger Burger\n2. Chicken Bucket\n3. Fries");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Restaurant mcDonald = new McDonald();
+        mcDonald.printName();
+        mcDonald.menu();
+        System.out.println("Total Price with Tax: " + mcDonald.totalPrice(10.0));
+
+        Restaurant kfc = new KFC();
+        kfc.printName();
+        kfc.menu();
+        System.out.println("Total Price with Tax: " + kfc.totalPrice(15.0));
+    }
+}
