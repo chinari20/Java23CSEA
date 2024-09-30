@@ -1,0 +1,37 @@
+package java_540;
+
+import java.util.Scanner;
+
+public class primeFibonacci {
+
+    public static boolean isPrime(int num) {
+        if (num < 2) return false; 
+        for (int i = 2; i * i <= num; i++) { 
+            if (num % i == 0) return false; 
+        }
+        return true; 
+    }
+
+    public static void printPrimeFibonacci(int n) {
+        int a = 0, b = 1; 
+        System.out.print("Prime Fibonacci numbers up to " + n + ": ");
+        
+        while (a <= n) {
+            if (isPrime(a)) { 
+                System.out.print(a + " "); 
+            }
+            
+            int next = a + b;
+            a = b;
+            b = next;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a value for n: ");
+        int n = scanner.nextInt(); 
+        printPrimeFibonacci(n); 
+        scanner.close(); 
+    }
+}
