@@ -1,0 +1,55 @@
+package javaAWT;
+
+import java.util.Scanner;
+
+class PINmismatchException extends Exception {
+    public PINmismatchException(String message) {
+        super(message);
+    }
+}
+
+public class q15_ATM_PIN_Valuator {
+    public static String account_name;
+    public static int pin; // Use lowercase 'pin' for consistency
+
+    public static void setDetails() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Set account holder name: ");
+        account_name = sc.next(); // No 'this' needed, as it's a static variable
+        
+        System.out.print("Set Pin number: ");
+        pin = sc.nextInt(); // No 'this' needed, as it's a static variable
+    }
+
+    public static void checkPin(String acc_holder_name, int PIN) throws PINmismatchException {
+        if (acc_holder_name.equals(account_name) && pin != PIN) {
+            throw new PINmismatchException("Sorry, your account has been locked...");
+        }
+    }
+
+    public static void main(String[] args) {
+        setDetails(); // Call to set account details
+        
+        int num = 0;
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter account holder name: ");
+        String acc_holder_name = sc.next();
+        
+        while (num < 3) {
+            System.out.print("Enter pin number: ");
+            int PIN = sc.nextInt();
+            try {
+                checkPin(acc_holder_name, PIN);
+                System.out.println("Account unlocked");
+                break; // Exit loop on successful entry
+            } catch (PINmismatchException e) {
+                num += 1;
+                System.out.println("Wrong PIN");
+                if (num == 3) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+        sc.close(); // Close the scanner after use
+    }
+}
