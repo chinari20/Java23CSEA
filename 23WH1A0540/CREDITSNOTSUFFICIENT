@@ -1,0 +1,122 @@
+package java_540;
+class CreditsNotSufficientException extends Exception {
+
+	 public CreditsNotSufficientException(String message) {
+
+	        super(message);
+
+	    }
+
+	}
+
+
+public class credits {
+	public static void performTransaction(int credits, int amount) throws CreditsNotSufficientException {
+
+        if (credits < 50) {
+
+            throw new CreditsNotSufficientException("Credits are insufficient. Minimum required is 50.");
+
+        }
+
+        if (credits < amount) {
+
+            System.out.println("Transaction failed: Not enough credits for the requested amount.");
+
+        } else {
+
+            System.out.println("Transaction successful! " + amount + " credits deducted.");
+
+            credits -= amount;
+
+        }
+
+    }
+
+
+
+    
+
+    public static void checkCredits(int credits) throws CreditsNotSufficientException {
+
+        if (credits < 50) {
+
+            throw new CreditsNotSufficientException("Credits are insufficient. Minimum required is 50.");
+
+        }
+
+        System.out.println("Credits are sufficient for the purchase.");
+
+    }
+
+
+
+    public static void main(String[] args) {
+
+        int credits = 40; 
+
+
+
+        
+
+        try {
+
+            checkCredits(credits); 
+
+        } catch (CreditsNotSufficientException e) {
+
+            System.out.println(e.getMessage());
+
+        }
+
+
+
+        
+
+        try {
+
+            performTransaction(credits, 30); 
+
+        } catch (CreditsNotSufficientException e) {
+
+            System.out.println(e.getMessage());
+
+        }
+
+
+
+        credits = 60; 
+
+
+
+        
+
+        try {
+
+            checkCredits(credits); 
+
+        } catch (CreditsNotSufficientException e) {
+
+            System.out.println(e.getMessage());
+
+        }
+
+
+
+ 
+
+        try {
+
+            performTransaction(credits, 30); // This should pass
+
+        } catch (CreditsNotSufficientException e) {
+
+            System.out.println(e.getMessage());
+
+        }
+
+    }
+
+}
+
+
