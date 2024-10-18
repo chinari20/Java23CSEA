@@ -1,1 +1,95 @@
+package cse_23wh1a0530;
+class PinMisMatchException extends Exception{
 
+	public PinMisMatchException(String message) {
+
+		super(message);
+
+		
+
+	}
+
+}
+
+public class ATMPinValidator {
+
+	String AccountHolderName;
+
+	int CorrectPin;
+
+public ATMPinValidator(String AccountHolderName,int CorrectPin) {
+
+	this.AccountHolderName=AccountHolderName;
+
+	this.CorrectPin=CorrectPin;
+
+}
+
+public void validate(int inputpin) throws PinMisMatchException{
+
+	int attempts=0;
+
+	while(attempts<3) {
+
+		if(inputpin==CorrectPin) {
+
+			System.out.println("WELCOME "+AccountHolderName+"!");
+
+			System.exit(0);
+
+			
+
+		}
+
+		else {
+
+			attempts++;
+
+			if(attempts==3) {
+
+				throw new PinMisMatchException("Sorry Your  Account has been Locked");
+
+			}
+
+			
+
+		}
+
+		
+
+		
+
+	}
+
+}
+
+}
+package cse_23wh1a0530;
+
+public class TestAtm {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ATMPinValidator validator=new ATMPinValidator("kanta",12345);
+
+		try {
+
+			validator.validate(125);
+
+			validator.validate(123);
+
+			validator.validate(1234);
+
+			
+
+		}
+
+		catch(PinMisMatchException e) {
+
+			System.out.println(e.getMessage());
+
+		}
+
+	}
+
+}
