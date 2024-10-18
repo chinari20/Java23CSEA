@@ -1,0 +1,77 @@
+package Assignment;
+class FuelEmptyException extends RuntimeException{
+	public FuelEmptyException() {
+		System.out.println("Fuel is low");
+	}
+}
+class EngineFailureException extends RuntimeException{
+	
+	public EngineFailureException() {
+		System.out.println("Engine failed ");
+	}
+	
+}
+class TyrePunctureException extends RuntimeException{
+	public TyrePunctureException() {
+		System.out.println("Tyre puncture please check");
+	}
+}
+
+public class ExampleTripException {
+
+	public static void main(String[] args) {
+		try {
+			MakeMyTrip(10," good","good");
+		}
+		catch(FuelEmptyException e) {
+			e.printStackTrace();
+			
+		}
+		catch(EngineFailureException e) {
+			e.printStackTrace();
+		}
+		catch(TyrePunctureException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+
+static void MakeMyTrip(int FuelLevel,String EngineCondition,String TyreStatus) throws  FuelEmptyException ,EngineFailureException,TyrePunctureException{
+	FuelCheck(FuelLevel);
+	Engine(EngineCondition);
+	Tyre(TyreStatus);
+	
+}
+static void Tyre(String TyreStatus) {
+	// TODO Auto-generated method stub
+	if(TyreStatus.equals("puncture")) {
+		throw new TyrePunctureException();
+	}
+	else {
+		System.out.println("Tyre condition is good");
+	}
+}
+private static void Engine(String EngineCondition) {
+	// TODO Auto-generated method stub
+	if(EngineCondition.equals("not good")) {
+		throw new EngineFailureException();
+		
+	}
+	else {
+		System.out.println("Engine condition is good");
+	}
+	
+}
+ static void FuelCheck(int FuelLevel) {
+	// TODO Auto-generated method stub
+	 if(FuelLevel<10) {
+		 throw new FuelEmptyException();
+	 }
+	 else {
+		 System.out.println("enough fuel");
+	 }
+	 
+	
+}
+}
