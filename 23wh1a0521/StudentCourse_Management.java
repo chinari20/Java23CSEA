@@ -1,7 +1,7 @@
 package java_practice;
 import java.util.ArrayList;
 import java.util.List;
-public class StudentCourse_Management {
+public class StudentCourseManagement {
 	    public static void main(String[] args) {
 	            Semester semester = new Semester();
 	            
@@ -50,7 +50,7 @@ class Course {
 
     public void setPrice(double price) {
         if (price < 1000 || price > 3000) {
-            throw new IllegalArgumentException("Price must be in the range of 1000 to 3000");
+            System.out.println("Price must be in the range of 1000 to 3000");
         }
         this.price = price;
     }
