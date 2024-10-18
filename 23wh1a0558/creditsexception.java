@@ -1,0 +1,88 @@
+package cse_23wh1a0558;
+public class creditsexception {
+    static class CreditsNotSufficientException extends Exception {
+        private static final long serialVersionUID = 1L;
+        public CreditsNotSufficientException(String message) {
+            super(message);
+        }
+  }
+    public static class UserAccount {
+        private int credits;
+        public UserAccount(int initialCredits) {
+            this.credits = initialCredits;
+        }
+        public void performTransaction(int amount) throws CreditsNotSufficientException {
+           if (credits < 50) {
+                throw new CreditsNotSufficientException("Credits are insufficient. Minimum required is 50.");
+           }
+            if (credits < amount) {
+                System.out.println("Transaction failed: Not enough credits for the requested amount.");
+            } else {
+                credits -= amount; 
+                System.out.println("Transaction successful! " + amount + " credits deducted.");
+            }
+        }
+
+        public void checkCredits() throws CreditsNotSufficientException {
+
+            if (credits < 50) {
+
+                throw new CreditsNotSufficientException("Credits are insufficient. Minimum required is 50.");
+
+            }
+
+            System.out.println("Credits are sufficient for the purchase.");
+
+        }
+
+    }
+    public static void main(String[] args) {
+
+        UserAccount user = new UserAccount(70); 
+
+        try {
+
+            user.checkCredits();
+
+        } catch (CreditsNotSufficientException e) {
+
+            System.out.println(e.getMessage());
+
+        }
+        try {
+
+            user.performTransaction(30);
+
+        } catch (CreditsNotSufficientException e) {
+
+            System.out.println(e.getMessage());
+
+        }
+        user = new UserAccount(60); 
+
+        try {
+
+            user.checkCredits();
+
+        } catch (CreditsNotSufficientException e) {
+
+            System.out.println(e.getMessage());
+
+        }
+
+        try {
+
+            user.performTransaction(30); 
+
+        } catch (CreditsNotSufficientException e) {
+
+            System.out.println(e.getMessage());
+
+        }
+
+    }
+
+}
+
+
+
