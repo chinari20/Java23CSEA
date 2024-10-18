@@ -1,0 +1,77 @@
+package java_503;
+import java.util.Scanner;
+import java.util.Scanner;
+
+public class KFC implements Restaurantjava {
+
+    private String name = "KFC";
+    private String[] menuItems = {"Burger - 100", "Pizza - 150", "Chicken Fry - 250"};
+    private double[] menuPrices = {100.0, 150.0, 250.0};
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        KFC kfc = new KFC();  // Adjusted class instantiation
+        kfc.name();
+        String[] menu = kfc.getMenu();
+
+        System.out.println("Menu items:");
+        for (int i = 0; i < menu.length; i++) {
+            System.out.println(i + ": " + menu[i]);
+        }
+
+        System.out.println("Enter the number of items you want to order: ");
+        int numItems = sc.nextInt();
+        int[] itemIds = new int[numItems];
+
+        for (int i = 0; i < numItems; i++) {
+            System.out.print("Enter item ID for item " + (i + 1) + ": ");
+            itemIds[i] = sc.nextInt();
+        }
+
+        System.out.println("Enter the date of your order: ");
+        String orderDate = sc.next();
+        System.out.println("Enter your table number: ");
+        int tableNumber = sc.nextInt();
+        kfc.placeOrder(itemIds, orderDate, tableNumber);
+
+        // It's better to keep the scanner open until it's really needed to close.
+        // sc.close();
+    }
+
+    public void name() {
+        System.out.println("The restaurant name is: " + name);
+    }
+
+    public String[] getMenu() {
+        return menuItems;
+    }
+
+    public double totalPrice(double initialPrice) {
+        double tax = initialPrice * 0.06;
+        return initialPrice + tax;
+    }
+
+    public void placeOrder(int[] itemIds, String date, int tableNumber) {
+        double totalCost = 0;
+        for (int itemId : itemIds) {
+            if (itemId >= 0 && itemId < menuItems.length) {
+                double cost = menuPrices[itemId];
+                totalCost += cost;
+                System.out.printf("Ordered %s (Cost: %.2f)\n", menuItems[itemId], cost);
+            } else {
+                System.out.println("Invalid item ID: " + itemId + ". Please try again.");
+            }
+        }
+
+        double finalPrice = totalPrice(totalCost);
+        System.out.printf("The total price (including tax) is %.3f\n", finalPrice);
+    }
+}
+
+interface Restaurantjava {
+    void name();
+    double totalPrice(double initialPrice);
+    String[] getMenu();
+    void placeOrder(int[] itemIds, String date, int tableNumber);
+}
