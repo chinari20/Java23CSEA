@@ -1,0 +1,51 @@
+package java511;
+import java.util.Scanner;
+import java.lang.Exception;
+
+ 
+public class ATMPIN {
+	static int pin;
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("enter account holder name:");
+		String acc_Holder_name = sc.nextLine();
+		System.out.println("enter account holder pin number:");
+		pin = sc.nextInt();
+		int count = 0;
+		int PWD;
+		 
+		while(count<3) {
+			System.out.println("enter your pin number:");
+			PWD = sc.nextInt();
+			
+			 try {
+				 if (PWD != pin) {
+					  count++;
+			          throw new WrongPinException("pin entered is incorrect!!.");
+			          
+			      }
+			      else {
+			    	  System.out.println("correct pin"); 
+			    	  break;
+			      } 
+			 }
+			 catch(WrongPinException  e) {
+					System.out.println("Exception: " + e.getMessage());
+				}
+ 
+		}
+		if(count == 3 )
+			System.out.println("Your account has been locked!!");
+		
+	}
+
+}
+
+
+class WrongPinException extends Exception {
+  public  WrongPinException(String message) {
+      super(message);
+  }
+}
+
+ 
