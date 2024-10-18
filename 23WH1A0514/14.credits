@@ -1,0 +1,66 @@
+package CSE_23_514;
+
+//CreditsNotSufficientException.java
+public class CreditsNotSufficientException extends Exception {
+	private static final long serialVersionUID = 1L;
+
+public CreditsNotSufficientException(String message) {
+     super(message);
+ }
+}
+
+
+//CreditManager.java
+public class CreditManager {
+ private int credits;
+
+ public CreditManager(int credits) {
+     this.credits = credits;
+ }
+
+ public void useCredits(int amount) throws CreditsNotSufficientException {
+     if (credits < 50) {
+         throw new CreditsNotSufficientException("Not enough credits. Current credits: " + credits);
+     }
+     credits -= amount;
+     System.out.println("Credits used: " + amount + ". Remaining credits: " + credits);
+ }
+
+ public int getCredits() {
+     return credits;
+ }
+}
+
+
+
+//Main.java
+public class Main {
+ public static void main(String[] args) {
+     CreditManager creditManager = new CreditManager(30); // Start with 30 credits
+
+     // First caller method
+     try {
+         creditManager.useCredits(10);
+     } catch (CreditsNotSufficientException e) {
+         System.out.println("Exception caught in caller method 1: " + e.getMessage());
+     }
+
+     // Change credits to a sufficient amount for testing
+     creditManager = new CreditManager(60); // Now start with 60 credits
+
+     // Second caller method
+     try {
+         creditManager.useCredits(10);
+     } catch (CreditsNotSufficientException e) {
+         System.out.println("Exception caught in caller method 2: " + e.getMessage());
+     }
+
+     // Third caller method
+     creditManager = new CreditManager(40); // Start with 40 credits
+     try {
+         creditManager.useCredits(20);
+     } catch (CreditsNotSufficientException e) {
+         System.out.println("Exception caught in caller method 3: " + e.getMessage());
+     }
+ }
+}
