@@ -1,0 +1,28 @@
+import java.util.HashSet;
+
+public class CommonElements {
+    public static void main(String[] args) {
+        String[] arr1 = {"apple", "banana", "cherry", "date"};
+        String[] arr2 = {"banana", "date", "fig", "grape"};
+       
+        HashSet<String> set1 = new HashSet<>();
+        HashSet<String> commonElements = new HashSet<>();
+       
+        // Add first array elements to a set
+        for (String s : arr1) {
+            set1.add(s);
+        }
+       
+        // Check for common elements
+        for (String s : arr2) {
+            if (set1.contains(s)) {
+                commonElements.add(s);
+            }
+        }
+       
+        System.out.println("Common elements between two arrays:");
+        for (String s : commonElements) {
+            System.out.println(s);
+        }
+    }
+}
