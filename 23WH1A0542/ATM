@@ -1,0 +1,61 @@
+package javapractice;
+
+	import java.util.Scanner;
+
+	class PinMisMatchException extends Exception {
+	    private static final long serialVersionUID = 1L;
+
+	    public PinMisMatchException(String message) {
+	        super(message);
+	    }
+	}
+
+	public class ATM {
+	    private String accountHolderName;
+	    private String correctPin = "1234"; // Example PIN
+	    private int attempts = 0;
+
+	    public ATM(String accountHolderName) {
+	        this.accountHolderName = accountHolderName;
+	    }
+
+	    public void validatePin(String enteredPin) throws PinMisMatchException {
+	        if (!enteredPin.equals(correctPin)) {
+	            attempts++;
+	            if (attempts >= 3) {
+	                throw new PinMisMatchException("Sorry..Your Account Has Been Locked.");
+	            } else {
+	                System.out.println("Incorrect PIN. You have " + (3 - attempts) + " attempt(s) left.");
+	            }
+	        } else {
+	            System.out.println("PIN validated successfully. Welcome, " + accountHolderName + "!");
+	        }
+	    }
+
+	    public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+	        
+	        System.out.print("Enter account holder name: ");
+	        String name = scanner.nextLine();
+	        
+	        ATM atm = new ATM(name);
+	        
+	        while (true) {
+	            System.out.print("Enter your PIN: ");
+	            String pin = scanner.nextLine();
+
+	            try {
+	                atm.validatePin(pin);
+	                break; // Exit loop if PIN is correct
+	            } catch (PinMisMatchException e) {
+	                System.out.println(e.getMessage());
+	                break; // Exit loop if account is locked
+	            }
+	        }
+	        
+	        scanner.close();
+	    }
+	}
+
+
+
