@@ -1,0 +1,26 @@
+package practice;
+import java.util.Scanner;
+
+
+public class Exceptions {
+
+	public static void main(String[] args) {
+		Scanner sc= new Scanner(System.in);
+		int credits;
+		System.out.println("enter the number of credits");;
+		credits=sc.nextInt();
+		try {
+			if(credits >= 50) {
+				System.out.println("your credits are "+ credits);
+			}
+			else {
+				throw new Exception();
+			}
+		}catch(Exception e) {
+			System.out.println("CreditsNotSuffiecientException!");
+		}
+		
+		
+	}
+
+}
