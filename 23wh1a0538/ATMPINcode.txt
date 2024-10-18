@@ -1,0 +1,90 @@
+package javaASS;
+
+import java.util.Scanner;
+
+
+
+class PinMisMatchException extends RuntimeException{
+
+	public PinMisMatchException(String message) {
+
+		super(message);
+
+	}
+
+}
+
+public class details {
+
+	
+
+	public static void PinChecker(int pin,int no) throws PinMisMatchException{
+
+		if(pin!=1234) {
+
+			throw new PinMisMatchException("Invalid pin:your acc has locked");
+
+		}
+
+	}
+
+
+
+	public static void main(String[] args) {
+
+		// TODO Auto-generated method stub
+
+		int no = 0;
+
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Give Account Holders name:");
+
+		String Accholdersname = sc.next();
+
+		while(no<3) {
+
+			System.out.println("GIVE PIN NUMBER");
+
+			int pin = sc.nextInt();
+
+		try {
+
+			PinChecker(pin,no);
+
+			System.out.println("acc unlocked");
+
+			return;
+
+		}catch(PinMisMatchException obj) {
+
+			no+=1;
+
+			if(no<3) {
+
+			System.out.println("Incorrect pin");
+
+			}
+
+			
+
+			if(no==3) {
+
+				System.out.println(obj.getMessage());
+
+			}
+
+		}
+
+		}
+
+		sc.close();
+
+
+
+	}
+
+
+
+}
+
