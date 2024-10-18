@@ -1,0 +1,27 @@
+package Basic;
+class CreditsInsufficientException extends RuntimeException{
+	public CreditsInsufficientException() {
+		System.out.println("Credits are insufficient");
+	}
+}
+public class CreditsNotSufficientException {
+	public static void main(String args[]) {
+		try {
+			checkMyCredits(85);
+		}
+		catch(CreditsInsufficientException e) {
+			e.printStackTrace();
+		}
+	}
+	static void checkMyCredits(int credits) {
+		creditsCheck(credits);
+	}
+	static void creditsCheck(int credits) {
+		if(credits < 50) {
+			throw new CreditsInsufficientException();
+		}
+		else {
+			System.out.println("Credits are sufficient");
+		}
+	}
+}
