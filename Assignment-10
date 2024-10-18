@@ -1,0 +1,40 @@
+class Bank {
+public int getBalance() {
+   return 0; // Default balance
+}
+}
+
+//Subclass for Bank A
+class BankA extends Bank {
+public int getBalance() {
+   return 1000; // Balance for Bank A
+}
+}
+
+//Subclass for Bank B
+class BankB extends Bank {
+public int getBalance() {
+   return 1500; // Balance for Bank B
+}
+}
+
+//Subclass for Bank C
+class BankC extends Bank {
+public int getBalance() {
+   return 2000; // Balance for Bank C
+}
+}
+
+//Main class
+public class BankDemo {
+public static void main(String[] args) {
+   Bank bankA = new BankA();
+   Bank bankB = new BankB();
+   Bank bankC = new BankC();
+
+   // Print the balance for each bank
+   System.out.println("Money deposited in Bank A: $" + bankA.getBalance());
+   System.out.println("Money deposited in Bank B: $" + bankB.getBalance());
+   System.out.println("Money deposited in Bank C: $" + bankC.getBalance());
+}
+}
