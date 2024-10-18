@@ -1,0 +1,43 @@
+package cse24; 
+import java.util.Scanner;
+class PinMisMatchException extends Exception {
+    public PinMisMatchException(String message) {
+        super(message);
+    }
+}
+public class ATMApplication {
+	
+	    private static final String CORRECT_PIN = "1234"; // Sample correct PIN
+
+	    public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+	        
+	        System.out.print("Enter Account Holder Name: ");
+	        String accountHolderName = scanner.nextLine();
+	        
+	        try {
+	            validatePin(scanner);
+	            System.out.println("PIN validated successfully for " + accountHolderName + ".");
+	        } catch (PinMisMatchException e) {
+	            System.out.println(e.getMessage());
+	        } finally {
+	            scanner.close();
+	        }
+	    }
+
+	    private static void validatePin(Scanner scanner) throws PinMisMatchException {
+	        int attempts = 0;
+	        while (attempts < 3) {
+	            System.out.print("Enter your PIN: ");
+	            String pin = scanner.nextLine();
+	            
+	            if (pin.equals(CORRECT_PIN)) {
+	                return; // Exit if the PIN is correct
+	            }
+	            attempts++;
+	            System.out.println("Incorrect PIN. You have " + (3 - attempts) + " attempts left.");
+	        }
+	        throw new PinMisMatchException("Sorry.. Your Account Has been Locked.");
+	    }
+	}
+
