@@ -1,0 +1,57 @@
+package practice;
+
+import java.util.Scanner;
+
+
+	abstract class shape{
+		static int lenght,breadth,radius,height,base,width;
+		abstract public double get_area();
+	}
+	class rectangle extends shape{
+		rectangle(int a,int b){
+			lenght = a;
+			breadth = b;
+		}
+		public double get_area() {
+			return lenght * breadth;
+		}
+	}
+	class circle extends shape{
+		circle(int a){
+			radius = a;
+		}
+		public double get_area() {
+			return 3.14*radius*radius;
+		}
+	}
+	class triangle extends shape{
+		triangle(int a,int b){
+			base = a;
+			height = b;
+		}
+		public double get_area() {
+			return(height * base) / 2;
+		}
+	}
+	
+public class PrintArea {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("enter the radius of circle: ");
+		int r = sc.nextInt();
+		circle c = new circle(r);
+		System.out.println(c.get_area());
+		System.out.println("enter the lenght and breadth of rectangle: ");
+		int l = sc.nextInt();
+		int b = sc.nextInt();
+		rectangle rec = new rectangle(l,b);
+		System.out.println(rec.get_area());
+		System.out.println("enter the lenght and breadth of triangle: ");
+		int h = sc.nextInt();
+		int s = sc.nextInt();
+		triangle tri = new triangle(h,s);
+		System.out.println(tri.get_area());
+
+	}
+
+}
