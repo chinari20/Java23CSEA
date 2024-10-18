@@ -1,0 +1,248 @@
+package cse_23wh1a0541;
+
+import java.util.Scanner;
+
+
+
+//Course class with properties and methods
+
+class Course {
+
+ private int id;
+
+ private String name;
+
+ private double price;
+
+
+
+ public Course(int id, String name, double price) {
+
+     this.id = id;
+
+     this.name = name;
+
+     this.price = price;
+
+ }
+
+
+
+ public int getId() {
+
+     return id;
+
+ }
+
+
+
+ public void setId(int id) {
+
+     this.id = id;
+
+ }
+
+
+
+ public String getName() {
+
+     return name;
+
+ }
+
+
+
+ public void setName(String name) {
+
+     this.name = name;
+
+ }
+
+
+
+ public double getPrice() {
+
+     return price;
+
+ }
+
+
+
+ public void setPrice(double price) {
+
+     this.price = price;
+
+ }
+
+
+
+ @Override
+
+ public String toString() {
+
+     return "Course{" +
+
+             "id=" + id +
+
+             ", name='" + name + '\'' +
+
+             ", price=" + price +
+
+             '}';
+
+ }
+
+}
+
+
+
+//Interface defining the method to add courses
+
+interface StudentCourse {
+
+ void addCourse(Course course);
+
+}
+
+
+
+//Student class implementing the StudentCourse interface
+
+class Student implements StudentCourse {
+
+ private String name;
+
+ private Course[] courses;
+
+ private int courseCount;
+
+
+
+ public Student(String name) {
+
+     this.name = name;
+
+     this.courses = new Course[5]; // Fixed size array for up to 5 courses
+
+     this.courseCount = 0;
+
+ }
+
+
+
+ @Override
+
+ public void addCourse(Course course) {
+
+     if (courseCount < courses.length) {
+
+         courses[courseCount++] = course;
+
+         System.out.println("Course added: " + course);
+
+     } else {
+
+         System.out.println("Cannot add more courses. Maximum limit reached.");
+
+     }
+
+ }
+
+
+
+ public void showCourses() {
+
+     System.out.println("Courses for student " + name + ":");
+
+     for (int i = 0; i < courseCount; i++) {
+
+         System.out.println(courses[i]);
+
+     }
+
+ }
+
+
+
+ public String getName() {
+
+     return name;
+
+ }
+
+}
+
+
+
+//Main application class
+
+public class StudentCourseManagement {
+
+ public static void main(String[] args) {
+
+     Scanner scanner = new Scanner(System.in);
+
+     
+
+     System.out.print("Enter student name: ");
+
+     String studentName = scanner.nextLine();
+
+     
+
+     Student student = new Student(studentName);
+
+     
+
+     while (true) {
+
+         System.out.print("Add a course? (yes/no): ");
+
+         String response = scanner.nextLine();
+
+         if (response.equalsIgnoreCase("no")) {
+
+             break;
+
+         }
+
+
+
+         System.out.print("Enter course ID: ");
+
+         int courseId = scanner.nextInt();
+
+         scanner.nextLine(); // Consume newline
+
+
+
+         System.out.print("Enter course name: ");
+
+         String courseName = scanner.nextLine();
+
+
+
+         System.out.print("Enter course price: ");
+
+         double coursePrice = scanner.nextDouble();
+
+         scanner.nextLine(); // Consume newline
+
+
+
+         Course course = new Course(courseId, courseName, coursePrice);
+
+         student.addCourse(course);
+
+     }
+
+     
+
+     student.showCourses();
+
+     scanner.close();
+
+ }
+
+}
+
