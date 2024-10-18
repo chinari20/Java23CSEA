@@ -1,0 +1,116 @@
+Course Class
+java
+Copy code
+public class Course {
+    private int id;
+    private String name;
+    private double price;
+
+    // Constructor
+    public Course(int id, String name, double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
+    // Getters and Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+}
+StudentCourse Interface
+java
+Copy code
+public interface StudentCourse {
+    void addCourse(Course course) throws Exception;
+    Course[] viewCourses() throws Exception;
+    double addFee(double fee) throws Exception;
+}
+Semester Class
+java
+Copy code
+import java.util.ArrayList;
+import java.util.List;
+
+public class Semester implements StudentCourse {
+    private List<Course> courses;
+
+    public Semester() {
+        this.courses = new ArrayList<>();
+    }
+
+    @Override
+    public void addCourse(Course course) throws Exception {
+        if (course == null) {
+            throw new Exception("Course cannot be null");
+        }
+        courses.add(course);
+    }
+
+    @Override
+    public Course[] viewCourses() throws Exception {
+        if (courses.isEmpty()) {
+            throw new Exception("No courses available");
+        }
+        return courses.toArray(new Course[0]);
+    }
+
+    @Override
+    public double addFee(double fee) throws Exception {
+        if (fee < 1000 || fee > 3000) {
+            throw new Exception("Fee must be between 1000 and 3000");
+        }
+        
+        double discount = (fee > 1500) ? fee * 0.10 : 0;
+        return fee - discount;
+    }
+}
+Usage Example
+Here’s a simple usage example demonstrating how to create a semester, add courses, view them, and calculate the fee.
+
+java
+Copy code
+public class Main {
+    public static void main(String[] args) {
+        try {
+            Semester semester = new Semester();
+
+            // Adding courses
+            semester.addCourse(new Course(1, "Mathematics", 1200));
+            semester.addCourse(new Course(2, "Physics", 1600));
+
+            // Viewing courses
+            Course[] courses = semester.viewCourses();
+            for (Course course : courses) {
+                System.out.println("Course ID: " + course.getId() + ", Name: " + course.getName() + ", Price: " + course.getPrice());
+            }
+
+            // Calculating fees
+            double feeWithDiscount = semester.addFee(2000);
+            System.out.println("Total Fee after discount: " + feeWithDiscount);
+
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+    }
+}
