@@ -1,0 +1,38 @@
+package Assignment;
+class CreditsNotSufficientException extends Exception{
+	public CreditsNotSufficientException(String message) {
+		super(message);
+		
+	}
+}
+public class CreditChecker {
+	public void checkCredits(int credits) throws CreditsNotSufficientException{
+		if(credits<50) {
+			throw new CreditsNotSufficientException("insufficient Credits");
+		}
+		else {
+			System.out.println("Sufficient Credits");
+		}
+	}
+
+}
+
+
+package Assignment;
+
+public class TestCredits {
+
+	public static void main(String[] args) {
+		CreditChecker Checker=new CreditChecker();
+		// TODO Auto-generated method stub
+		try {
+			Checker.checkCredits(10);
+			
+		}
+		catch(CreditsNotSufficientException e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+
+}
