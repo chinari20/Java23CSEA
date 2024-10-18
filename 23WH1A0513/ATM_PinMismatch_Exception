@@ -1,0 +1,38 @@
+package Basic;
+import java.util.Scanner;
+class PinMismatchException extends Exception {
+ public PinMismatchException(String message) {
+     super(message);
+ }
+}
+public class ATM {
+ private static final String VALID_PIN = "1234"; 
+ private static final int MAX_ATTEMPTS = 3;
+ public static void main(String[] args) {
+     Scanner scanner = new Scanner(System.in);    
+     System.out.print("Enter account holder's name: ");
+     String accountHolderName = scanner.nextLine();    
+     try {
+         validatePin(scanner, accountHolderName);
+         System.out.println("Access granted. Welcome, " + accountHolderName + "!");
+     } catch (PinMismatchException e) {
+         System.out.println(e.getMessage());
+     } finally {
+         scanner.close();
+     }
+ }
+ private static void validatePin(Scanner scanner, String accountHolderName) throws PinMismatchException {
+     int attempts = 0;
+     while (attempts < MAX_ATTEMPTS) {
+         System.out.print("Enter your PIN: ");
+         String enteredPin = scanner.nextLine();
+         if (enteredPin.equals(VALID_PIN)) {
+             return; 
+         } else {
+             attempts++;
+             System.out.println("Incorrect PIN. You have " + (MAX_ATTEMPTS - attempts) + " attempt(s) left.");
+         }
+     }
+     throw new PinMismatchException("Sorry.. Your Account Has been Locked.");
+ }
+}
