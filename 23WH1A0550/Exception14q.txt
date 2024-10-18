@@ -1,0 +1,48 @@
+package cse550;
+
+import java.util.Scanner;
+
+// Custom Exception Class
+public class CreditsNotSufficientException extends Exception {
+    public CreditsNotSufficientException(String message) {
+        super(message);
+    }
+}
+
+// Credit Manager Class
+class CreditManager {
+    private int credits;
+
+    public CreditManager(int credits) {
+        this.credits = credits;
+    }
+
+    public void checkCredits() throws CreditsNotSufficientException {
+        if (credits < 50) {
+            throw new CreditsNotSufficientException("Credits not sufficient!! Minimum required is 50");
+        }
+        System.out.println("Credits are sufficient.");
+    }
+}
+
+// Main Class
+public class Exception14q {
+    public static void callerMethod(int credits) {
+        CreditManager creditManager = new CreditManager(credits);
+        try {
+            creditManager.checkCredits();
+        } catch (CreditsNotSufficientException e) {
+            System.out.println("Caller Method: " + e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter your credits:");
+        int credits = sc.nextInt();
+
+        callerMethod(credits);
+        System.out.println("Testing with different values:");
+        sc.close(); // Close the scanner
+    }
+}
