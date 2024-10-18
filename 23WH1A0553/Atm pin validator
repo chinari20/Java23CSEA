@@ -1,0 +1,72 @@
+package java_23wh1a0553;
+import java.util.Scanner;
+import java.lang.Exception;
+
+ 
+public class ATM_PIN_AnotherMethod {
+	static int pin;
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("enter account holder name:");
+		String acc_Holder_name = sc.nextLine();
+		System.out.println("enter account holder pin number:");
+		pin = sc.nextInt();
+		int count = 0;
+		int PWD;
+		PaymentProcessor paymentProcessor = new PaymentProcessor();
+		 
+		while(count<3) {
+			System.out.println("enter your pin number:");
+			PWD = sc.nextInt();
+			String m = paymentProcessor.payment(PWD,pin);
+			System.out.println(m);
+			if(m == "Payment processed successfully.")
+				break;
+			else
+				count++;
+		}
+		if(count == 3 )
+			System.out.println("Your account has been locked!!");
+		System.out.println(acc_Holder_name);
+	}
+
+}
+
+
+class WrongPinException extends Exception {
+  public  WrongPinException(String message) {
+      super(message);
+  }
+}
+
+class PinChecker {
+  public int checkPin(int PWD,int pin ) throws WrongPinException {
+	   
+     if (PWD != pin) {
+          throw new WrongPinException("pin entered is incorrect!!.");
+      }
+      else {
+    	  System.out.println("correct pin");
+    	  return 1;
+      }
+  }
+}
+
+class PaymentProcessor {
+  private PinChecker pinChecker = new PinChecker();
+
+  public String payment(int PWD,int pin) {
+	  
+      try {
+          pinChecker.checkPin(PWD,pin);
+          String msg = "Payment processed successfully.";
+          return msg;
+           
+           
+      } catch (WrongPinException e) {
+    	  String msg = "Payment failed: " + e.getMessage();
+           
+    	  return msg;
+      }
+  }
+}
