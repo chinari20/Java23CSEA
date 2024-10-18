@@ -1,0 +1,39 @@
+package java_assignment;
+import java.util.Scanner;
+import java.lang.Exception;
+class CreditsNotSufficientException extends Exception{
+	CreditsNotSufficientException(String Message){
+		super(Message);
+	}
+}
+
+public class credit_exception {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter credits");
+		int credits=sc.nextInt();
+		sc.close();
+		try {
+			checkcredits(credits);
+			usecredits(credits);
+		}
+		catch(CreditsNotSufficientException e) {
+			System.out.println("Note:"+e.getMessage());
+		}
+	}
+		static void checkcredits(int credits) throws CreditsNotSufficientException{
+			if(credits<50) {
+				throw new CreditsNotSufficientException("min required credits are 50");
+			}
+			System.out.println("check credits:"+credits);
+			
+		}
+		static void usecredits(int credits) throws CreditsNotSufficientException{
+			System.out.println("use credits:"+credits);
+			
+		}
+
+	}
+
+
