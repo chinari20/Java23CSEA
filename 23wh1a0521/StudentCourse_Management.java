@@ -3,11 +3,12 @@ import java.util.ArrayList;
 import java.util.List;
 public class StudentCourseManagement {
 	    public static void main(String[] args) {
+	        try {
 	            Semester semester = new Semester();
 	            
 	            // Adding courses
 	            semester.addCourse(new Course(1, "Math 101", 1500));
-	            semester.addCourse(new Course(2, "Physics 101", 2000));
+	            semester.addCourse(new Course(2, "Physics 101", 5000));
 
 	            // Viewing courses
 	            Course[] courses = semester.viewCourses();
@@ -19,9 +20,11 @@ public class StudentCourseManagement {
 	            double finalFee = semester.addFee(1600);
 	            System.out.println("Final Fee after discount: " + finalFee);
 
-	        
+	        } catch (Exception e) {
+	            System.out.println("Error: " + e.getMessage());
 	        }
 	    }
+	}
 
 class Course {
     private int id;
@@ -50,36 +53,36 @@ class Course {
 
     public void setPrice(double price) {
         if (price < 1000 || price > 3000) {
-            System.out.println("Price must be in the range of 1000 to 3000");
+            throw new IllegalArgumentException("Price must be in the range of 1000 to 3000");
         }
         this.price = price;
     }
 }
 interface StudentCourse {
-    void addCourse(Course course);
-    Course[] viewCourses();
-    double addFee(double fee) ;
+    void addCourse(Course course) throws Exception;
+    Course[] viewCourses() throws Exception;
+    double addFee(double fee) throws Exception;
 }
 
 
 class Semester implements StudentCourse {
     private List<Course> courses = new ArrayList<>();
 
-    public void addCourse(Course course) {
+    public void addCourse(Course course) throws Exception {
         if (course == null) {
-            System.out.println("Course cannot be null");
+            throw new IllegalArgumentException("Course cannot be null");
         }
         courses.add(course);
     }
-    public Course[] viewCourses() {
+    public Course[] viewCourses() throws Exception {
         if (courses.isEmpty()) {
-            System.out.println("No courses available");
+            throw new Exception("No courses available");
         }
         return courses.toArray(new Course[0]);
     }
-    public double addFee(double fee) {
+    public double addFee(double fee) throws Exception {
         if (fee < 1000 || fee > 3000) {
-            System.out.println("Fee must be in the range of 1000 to 3000");
+            throw new IllegalArgumentException("Fee must be in the range of 1000 to 3000");
         }
         double discount = fee > 1500 ? fee * 0.10 : 0;
         return fee - discount;
