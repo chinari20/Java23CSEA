@@ -1,5 +1,5 @@
-package javapractise;
-public class creditexception {
+package cse_23wh1a0558;
+public class creditsexception {
     static class CreditsNotSufficientException extends Exception {
         private static final long serialVersionUID = 1L;
         public CreditsNotSufficientException(String message) {
