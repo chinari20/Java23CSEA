@@ -1,4 +1,4 @@
-package cse_23wh1a0558;
+package javapractise;
 public class creditexception {
     static class CreditsNotSufficientException extends Exception {
         private static final long serialVersionUID = 1L;
