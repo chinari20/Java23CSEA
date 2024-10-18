@@ -1,0 +1,29 @@
+package java_23wh1a0553;
+import java.util.Scanner;
+import java.lang.Exception;
+
+ 
+class CreditsNotSufficientException extends Exception {
+    public CreditsNotSufficientException(String Message) {
+        super(Message);
+    }
+}
+
+public class CreditsException{
+	public static void main(String args[]) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter user credits:");
+		int userCredits = sc.nextInt();
+		try {
+			if(userCredits < 50 ) {
+				throw new CreditsNotSufficientException("credits of the student is not sufficient as it is less than 50");
+			}
+			else
+				System.out.println("Credits are sufficient!!");
+		}
+		catch(CreditsNotSufficientException e) {
+			System.out.println("Exception: " + e.getMessage());
+		}
+		 
+	}
+}
