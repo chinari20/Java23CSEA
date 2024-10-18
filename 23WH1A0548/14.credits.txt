@@ -1,0 +1,49 @@
+package assignments548;
+
+
+class CreditsNotSufficientException extends Exception {
+    public CreditsNotSufficientException(String message) {
+        super(message);
+    }
+}
+
+public class CreditChecker {
+
+    public void checkCredits(int credits) throws CreditsNotSufficientException {
+        if (credits < 50) {
+            throw new CreditsNotSufficientException("Insufficient credits: " + credits + ". At least 50 credits are required.");
+        }
+        System.out.println("Credits are sufficient: " + credits);
+    }
+
+    public void processPayment(int credits) {
+        try {
+            checkCredits(credits);
+            System.out.println("Payment processed successfully.");
+        } catch (CreditsNotSufficientException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public void redeemRewards(int credits) {
+        try {
+            checkCredits(credits);
+            System.out.println("Rewards redeemed successfully.");
+        } catch (CreditsNotSufficientException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        CreditChecker checker = new CreditChecker();
+
+        System.out.println("Testing with 30 credits:");
+        checker.processPayment(30);
+        checker.redeemRewards(30);
+
+        System.out.println("\nTesting with 70 credits:");
+        checker.processPayment(70);
+        checker.redeemRewards(70);
+    }
+}
+
