@@ -1,0 +1,65 @@
+package cse24;
+class  CreditsNotSufficientException extends RuntimeException{
+
+	 public CreditsNotSufficientException() {
+
+		 System.out.println("Credits not Sufficient,Please improve..");
+
+	 }
+
+}
+public class CreditsException {
+	public static void main(String[] args) {
+
+		try {//handling the Exception
+
+			MyCredits(45);
+
+			} 
+
+		catch(CreditsNotSufficientException e) {
+
+			e.printStackTrace();
+
+		}
+
+	}
+
+
+
+	static void MyCredits(int numberofcredits) {
+
+		// TODO Auto-generated method stub
+
+		//handling --- postponing handling the exception
+
+		creditsCheck(numberofcredits);
+
+	}
+
+
+
+ static void creditsCheck(int numberofcredits) {
+
+		// TODO Auto-generated method stub
+
+		if(numberofcredits<50) {
+
+			throw new CreditsNotSufficientException();
+
+		}
+
+		else {
+
+			System.out.println("Credits are Sufficient");
+
+		}
+
+	
+
+ }
+
+}
+
+
+
