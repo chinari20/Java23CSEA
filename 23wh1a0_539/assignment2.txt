@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class SimpleCalculator {
+    public static void main(String[] args) {
+        // Create a Scanner object to take input
+        Scanner sc = new Scanner(System.in);
+
+        // Take inputs for two numbers
+        System.out.print("Enter first number: ");
+        double num1 = sc.nextDouble();
+
+        System.out.print("Enter second number: ");
+        double num2 = sc.nextDouble();
+
+        // Take input for the operator
+        System.out.print("Enter operator (+, -, *, /): ");
+        char operator = sc.next().charAt(0);
+
+        double result = 0;
+        boolean validOperation = true;
+
+        // Use switch case to perform the operation based on the operator input
+        switch (operator) {
+            case '+':
+                result = num1 + num2; // Addition
+                break;
+            case '-':
+                result = num1 - num2; // Subtraction
+                break;
+            case '*':
+                result = num1 * num2; // Multiplication
+                break;
+            case '/':
+                // Ensure no division by zero
+                if (num2 != 0) {
+                    result = num1 / num2; // Division
+                } else {
+                    System.out.println("Error: Division by zero is not allowed.");
+                    validOperation = false;
+                }
+                break;
+            default:
+                // Handle invalid operator input
+                System.out.println("Error: Invalid operator. Please use +, -, *, or /.");
+                validOperation = false;
+        }
+
+        // Output the result if the operation was valid
+        if (validOperation) {
+            System.out.println("The result is: " + result);
+        }
+    }
+}
