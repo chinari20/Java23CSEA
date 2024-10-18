@@ -1,1 +1,62 @@
+package cse_23wh1a0530;
+class CreditsNotSufficientException extends Exception{
+
+	public CreditsNotSufficientException(String message) {
+
+		super(message);
+
+		
+
+	}
+
+}
+
+public class creditschecker {
+
+	public void checkCredits(int credits) throws CreditsNotSufficientException{
+
+		if(credits<50) {
+
+			throw new CreditsNotSufficientException("insufficient Credits");
+
+		}
+
+		else {
+
+			System.out.println("Sufficient Credits");
+
+		}
+
+	}
+
+}
+package cse_23wh1a0530;
+public class TestCredits {
+
+
+
+		public static void main(String[] args) {
+
+			 creditschecker check=new creditschecker();
+
+			// TODO Auto-generated method stub
+
+			try {
+				check.checkCredits(10);
+
+			}
+
+			catch(CreditsNotSufficientException e) {
+
+				System.out.println(e.getMessage());
+
+			}
+
+
+
+		}
+
+
+
+	}
 
