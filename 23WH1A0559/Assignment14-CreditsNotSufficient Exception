@@ -1,0 +1,34 @@
+package cse559;
+//14:Create and Raise the exception CreditsNotSuffiecientException if credits are less than 50 with different caller methods and handle them..
+ class  CreditsNotSufficientException extends RuntimeException{
+	 public CreditsNotSufficientException() {
+		 System.out.println("Credits not Sufficient,Please improve..");
+	 }
+ }
+public class CreditsExceptionExample {
+	public static void main(String[] args) {
+		try {//handling the Exception
+			MyCredits(49);
+			} 
+		catch(CreditsNotSufficientException e) {
+			e.printStackTrace();
+		}
+	}
+
+	static void MyCredits(int numberofcredits) {
+		// TODO Auto-generated method stub
+		//handling --- postponing handling the exception
+		creditsCheck(numberofcredits);
+	}
+
+ static void creditsCheck(int numberofcredits) {
+		// TODO Auto-generated method stub
+		if(numberofcredits<50) {
+			throw new CreditsNotSufficientException();
+		}
+		else {
+			System.out.println("Credits are Sufficient");
+		}
+	
+ }
+}
