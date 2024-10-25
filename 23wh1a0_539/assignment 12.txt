@@ -76,7 +76,7 @@ class KFC implements Restaurant {
     @Override
     public Order placeOrder() {
         Order order = new Order((int) (Math.random() * 10000)); // Random order ID
-        // Add items to the order for demonstration
+       
         for (Item item : menu) {
             order.addItem(item); // Adding all items to the order
         }
