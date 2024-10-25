@@ -2,27 +2,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-// Custom exception class
+
 class CourseException extends Exception {
     public CourseException(String message) {
         super(message);
     }
 }
 
-// Course class
 class Course {
     private int id;
     private String name;
     private double price;
 
-    // Constructor
     public Course(int id, String name, double price) {
         this.id = id;
         this.name = name;
         this.price = price;
     }
 
-    // Getters
+
     public int getId() {
         return id;
     }
@@ -36,14 +34,14 @@ class Course {
     }
 }
 
-// StudentCourse interface
+
 interface StudentCourse {
     void addCourse(Course course) throws CourseException;
     Course[] viewCourses() throws CourseException;
     double addFee(double fee) throws CourseException;
 }
 
-// Main class implementing the StudentCourse interface
+
 public class assignment16 implements StudentCourse {
     private List<Course> courses = new ArrayList<>();
 
@@ -77,19 +75,19 @@ public class assignment16 implements StudentCourse {
         assignment16 semester = new assignment16();
 
         try {
-            // Adding courses
+       
             semester.addCourse(new Course(1, "Java Programming", 2000));
             semester.addCourse(new Course(2, "Data Structures", 1500));
             semester.addCourse(new Course(3, "Web Development", 1200));
 
-            // Viewing courses
+     
             Course[] courses = semester.viewCourses();
             System.out.println("Available Courses:");
             for (Course course : courses) {
                 System.out.println("ID: " + course.getId() + ", Name: " + course.getName() + ", Price: " + course.getPrice());
             }
 
-            // Adding fee
+      
             System.out.print("Enter fee amount to add: ");
             double fee = scanner.nextDouble();
             double finalFee = semester.addFee(fee);
