@@ -1,0 +1,26 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class Assignment25 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int number = scanner.nextInt();
+
+        if (number < 0) {
+            System.out.println("Factorial is not defined for negative numbers.");
+        } else {
+            BigInteger factorial = calculateFactorial(number);
+            System.out.println("Factorial of " + number + " is: " + factorial);
+        }
+    }
+
+    private static BigInteger calculateFactorial(int number) {
+        BigInteger result = BigInteger.ONE;
+        for (int i = 2; i <= number; i++) {
+            result = result.multiply(BigInteger.valueOf(i));
+        }
+        return result;
+    }
+}
+
