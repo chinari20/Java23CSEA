@@ -1,0 +1,39 @@
+package java_23wh1a0553;
+import java.util.Random;
+import java.lang.Thread;
+
+class RandomThread extends Thread{
+	Random rand = new Random();
+	public void run(){
+		int	random_num = rand.nextInt(100);
+			System.out.println("generated num is : "+ random_num);
+			if(random_num % 2==0) {
+				EvenThread e = new EvenThread(random_num);
+				e.start();
+			}
+			else {
+				OddThread o = new OddThread(random_num);
+				o.start();
+			}
+		}
+}
+
+class EvenThread extends Thread{
+	EvenThread(int EvenRandom) {
+		System.out.println("the square of even random number is:  "+ Math.pow(EvenRandom, 2)); 
+	}
+}
+
+class OddThread extends Thread{
+	OddThread(int OddRandom) {
+		System.out.println("the cube of odd random number is:  "+ Math.pow(OddRandom, 3)); 
+	}
+}
+public class RandomNumThread {
+
+	public static void main(String[] args) {
+		RandomThread t1 = new RandomThread();
+		t1.start();
+	}
+
+}
