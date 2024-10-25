@@ -1,0 +1,79 @@
+package Assignment;
+import java.util.Random;
+class NumberGeneratorThread extends Thread{
+	private int number;
+	public int getnumber() {
+		return number;
+	}
+	public void run() {
+		Random random=new Random();
+		while(true) {
+			number=random.nextInt(100);
+			System.out.println("Generated number is "+number);
+		try {
+			Thread.sleep(1000);
+		}
+		catch(InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+	}
+}
+class SquareThread extends Thread{
+	private final NumberGeneratorThread generatorThread;
+	public SquareThread(NumberGeneratorThread generatorThread) {
+		this.generatorThread=generatorThread;
+		
+	}
+	public void run() {
+		while(true) {
+			int number=generatorThread.getnumber();
+			if(number%2==0) {
+				System.out.println("The square of the number "+number+ "is "+(number*number));
+				
+			}
+			try {
+				Thread.sleep(1000);
+			}
+			catch(InterruptedException e) {
+				e.printStackTrace();
+				
+			}
+		}
+	}
+	
+}
+class CubeThread extends Thread{
+	private final NumberGeneratorThread generatorThread;
+	public CubeThread(NumberGeneratorThread generatorThread) {
+		this.generatorThread=generatorThread;
+	}
+	public void run() {
+		while(true) {
+			int number=generatorThread.getnumber();
+			if(number%2!=0) {
+				System.out.println("The cube of the number is "+number+" is :"+(number*number*number));
+			}
+			try {
+				Thread.sleep(1000);
+			}
+			catch(InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}
+public class MultiThread {
+
+	public static void main(String[] args) {
+		NumberGeneratorThread generatorThread=new NumberGeneratorThread();
+		SquareThread squareThread=new SquareThread(generatorThread);
+		CubeThread cubeThread=new CubeThread(generatorThread);
+		generatorThread.start();
+		squareThread.start();
+		cubeThread.start();
+	}
+
+}
