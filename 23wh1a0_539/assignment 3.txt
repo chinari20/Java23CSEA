@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class EvenOddSum {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of integers you want to input: ");
+        int n = scanner.nextInt();
+
+        int evenSum = 0;
+        int oddSum = 0;
+
+        System.out.println("Enter " + n + " integers:");
+
+        for (int i = 0; i < n; i++) {
+            int number = scanner.nextInt();
+            if (number % 2 == 0) {
+                evenSum += number;  // Add to even sum
+            } else {
+                oddSum += number;   // Add to odd sum
+            }
+        }
+
+        System.out.println("Sum of even integers: " + evenSum);
+        System.out.println("Sum of odd integers: " + oddSum);
+
+        scanner.close();
+    }
+}
