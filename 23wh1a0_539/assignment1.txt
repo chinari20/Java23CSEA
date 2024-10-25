@@ -3,17 +3,15 @@ import java.util.Scanner;
 
 public class ElectricityBill {
     public static void main(String[] args) {
-        // Create a Scanner object to take input
+       
         Scanner sc = new Scanner(System.in);
 
-        // Take inputs for old and current reading
         System.out.print("Enter old reading: ");
         int oldReading = sc.nextInt();
 
         System.out.print("Enter current reading: ");
         int currentReading = sc.nextInt();
 
-        // Calculate the number of units consumed
         int units = currentReading - oldReading;
         int billAmount = 0;
 
@@ -29,7 +27,7 @@ public class ElectricityBill {
             billAmount = (50 * 1) + (50 * 2) + (100 * 3) + (200 * 4) + ((units - 400) * 5); // Rs.5 per unit for units above 400
         }
 
-        // Output the bill amount
+ 
         System.out.println("Total units consumed: " + units);
         System.out.println("Electricity Bill: Rs." + billAmount);
     }
