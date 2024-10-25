@@ -1,0 +1,25 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class TableDisplayConsole {
+    public static void main(String[] args) {
+        String filePath = "Table.txt"; // Update this if needed
+        displayTable(filePath);
+    }
+
+    private static void displayTable(String filePath) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String headerLine = br.readLine(); // Read header
+            System.out.println(headerLine);
+            System.out.println("-------------------------"); // For visual separation
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line); // Print each row
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+    }
+}

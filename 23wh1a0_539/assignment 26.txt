@@ -1,0 +1,31 @@
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class IntegerDivisionApp {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter Num1: ");
+        String num1Input = scanner.nextLine();
+        System.out.print("Enter Num2: ");
+        String num2Input = scanner.nextLine();
+
+        try {
+            int num1 = Integer.parseInt(num1Input);
+            int num2 = Integer.parseInt(num2Input);
+
+            if (num2 == 0) {
+                throw new ArithmeticException("Cannot divide by zero.");
+            }
+
+            int result = num1 / num2;
+            System.out.println("Result: " + result);
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Please enter valid integers.");
+        } catch (ArithmeticException e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            scanner.close();
+        }
+    }
+}
