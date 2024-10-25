@@ -1,0 +1,120 @@
+package prac;
+	import java.util.HashSet;
+	import java.util.Scanner;
+
+	class Product {
+	    private int id;
+	    private String name;
+	    private double price;
+
+	    public Product(int id, String name, double price) {
+	        this.id = id;
+	        this.name = name;
+	        this.price = price;
+	    }
+
+	    public int getId() {
+	        return id;
+	    }
+
+	    public String getName() {
+	        return name;
+	    }
+
+	    public double getPrice() {
+	        return price;
+	    }
+
+	    @Override
+	    public String toString() {
+	        return "Product{" +
+	                "id=" + id +
+	                ", name='" + name + '\'' +
+	                ", price=" + price +
+	                '}';
+	    }
+	}
+
+	class Seller {
+	    private HashSet<Product> products;
+
+	    public Seller() {
+	        products = new HashSet<>();
+	    }
+
+	    public void addProduct(Product product) {
+	        products.add(product);
+	    }
+
+	    public HashSet<Product> getProducts() {
+	        return products;
+	    }
+	}
+
+	class Customer {
+	    private HashSet<Product> orderedProducts;
+
+	    public Customer() {
+	        orderedProducts = new HashSet<>();
+	    }
+
+	    public void orderProduct(Product product) {
+	        orderedProducts.add(product);
+	    }
+
+	    public double calculateTotalPrice(HashSet<Product> availableProducts) {
+	        double totalPrice = 0.0;
+	        for (Product orderedProduct : orderedProducts) {
+	            for (Product availableProduct : availableProducts) {
+	                if (orderedProduct.getId() == availableProduct.getId()) {
+	                    totalPrice += availableProduct.getPrice();
+	                    System.out.println("Ordered: " + availableProduct.getName() + " - Price: $" + availableProduct.getPrice());
+	                }
+	            }
+	        }
+	        return totalPrice;
+	    }
+	}
+
+	public class Hashset {
+	    public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+	        Seller seller = new Seller();
+
+	        seller.addProduct(new Product(1, "Laptop", 800.00));
+	        seller.addProduct(new Product(2, "Smartphone", 600.00));
+	        seller.addProduct(new Product(3, "Tablet", 300.00));
+
+	        System.out.println("Available Products:");
+	        for (Product product : seller.getProducts()) {
+	            System.out.println(product);
+	        }
+
+	        Customer customer = new Customer();
+	        System.out.print("Enter the ID of the product you want to order (0 to finish): ");
+
+	        while (true) {
+	            int productId = scanner.nextInt();
+	            if (productId == 0) break;
+
+	            boolean productFound = false;
+	            for (Product product : seller.getProducts()) {
+	                if (product.getId() == productId) {
+	                    customer.orderProduct(product);
+	                    productFound = true;
+	                    break;
+	                }
+	            }
+	            if (!productFound) {
+	                System.out.println("Product not found. Please try again.");
+	            }
+	        }
+
+	        double totalPrice = customer.calculateTotalPrice(seller.getProducts());
+	        System.out.println("Total Price: $" + totalPrice);
+
+	        scanner.close();
+	    }
+	}
+
+
