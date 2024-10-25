@@ -1,0 +1,65 @@
+package Assignment;
+
+import java.util.Random;
+
+class randomThread implements Runnable{
+	Random rand=new Random();
+	int num;
+	public void run() {
+		num=rand.nextInt(1,1000);
+		System.out.println(num);
+		if(num%2==0) {
+			evenThread evenobj=new evenThread(num);
+			evenobj.run();
+			
+		}
+		else {
+			oddThread oddobj=new oddThread(num);
+			oddobj.run();
+		}
+		
+	}
+	
+	
+}
+class evenThread implements Runnable{
+	int num;
+	public evenThread (int num) {
+		this.num=num;
+	}
+	public void run() {
+		System.out.println("Square is:"+num*num);
+		
+	}
+
+}
+class oddThread implements Runnable{
+	int num;
+	public oddThread(int num) {
+		this.num=num;
+	}
+	
+	public void run() {
+		System.out.println("Cube is:"+num*num*num);
+		
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+public class threadDemo {
+	public static void main(String[] args) {
+	randomThread randobj=new randomThread();
+	randobj.run();
+	
+	
+	}
+
+}
