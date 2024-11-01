@@ -1,0 +1,141 @@
+package problems_540;
+interface Bank {
+    void createAccount(String accountHolderName, String accountType);
+    void creditAmount(double amount);
+    void debitAmount(double amount);
+    void transferAmount(double amount, Bank targetBank);
+    String miniStatement();
+    double getFixedRateOfInterest();
+}
+
+
+class SBI implements Bank {
+    private String accountHolderName;
+    private String accountType;
+    private double balance;
+
+    @Override
+    public void createAccount(String accountHolderName, String accountType) {
+        this.accountHolderName = accountHolderName;
+        this.accountType = accountType;
+        this.balance = 0.0;
+        System.out.println("SBI Account created for " + accountHolderName);
+    }
+
+    @Override
+    public void creditAmount(double amount) {
+        balance += amount;
+        System.out.println("Credited $" + amount + " to SBI account.");
+    }
+
+    @Override
+    public void debitAmount(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Debited $" + amount + " from SBI account.");
+        } else {
+            System.out.println("Insufficient funds in SBI account.");
+        }
+    }
+
+    @Override
+    public void transferAmount(double amount, Bank targetBank) {
+        if (amount <= balance) {
+            debitAmount(amount);
+            targetBank.creditAmount(amount);
+            System.out.println("Transferred $" + amount + " from SBI to target account.");
+        } else {
+            System.out.println("Insufficient funds in SBI account for transfer.");
+        }
+    }
+
+    @Override
+    public String miniStatement() {
+        return "SBI Account Holder: " + accountHolderName + ", Balance: $" + balance;
+    }
+
+    @Override
+    public double getFixedRateOfInterest() {
+        return 6.0; // Fixed rate of interest for SBI
+    }
+}
+
+
+class Axis implements Bank {
+    private String accountHolderName;
+    private String accountType;
+    private double balance;
+
+    @Override
+    public void createAccount(String accountHolderName, String accountType) {
+        this.accountHolderName = accountHolderName;
+        this.accountType = accountType;
+        this.balance = 0.0;
+        System.out.println("Axis Account created for " + accountHolderName);
+    }
+
+    @Override
+    public void creditAmount(double amount) {
+        balance += amount;
+        System.out.println("Credited $" + amount + " to Axis account.");
+    }
+
+    @Override
+    public void debitAmount(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Debited $" + amount + " from Axis account.");
+        } else {
+            System.out.println("Insufficient funds in Axis account.");
+        }
+    }
+
+    @Override
+    public void transferAmount(double amount, Bank targetBank) {
+        if (amount <= balance) {
+            debitAmount(amount);
+            targetBank.creditAmount(amount);
+            System.out.println("Transferred $" + amount + " from Axis to target account.");
+        } else {
+            System.out.println("Insufficient funds in Axis account for transfer.");
+        }
+    }
+
+    @Override
+    public String miniStatement() {
+        return "Axis Account Holder: " + accountHolderName + ", Balance: $" + balance;
+    }
+
+    @Override
+    public double getFixedRateOfInterest() {
+        return 5.5; // Fixed rate of interest for Axis
+    }
+}
+public class restaurant {
+	public static void main(String[] args) {
+        Bank mySBIAccount = new SBI();
+        Bank myAxisAccount = new Axis();
+
+       
+        mySBIAccount.createAccount("John Doe", "Savings");
+        myAxisAccount.createAccount("Jane Doe", "Current");
+
+  
+        mySBIAccount.creditAmount(2000);
+        myAxisAccount.creditAmount(1500);
+
+    
+        mySBIAccount.debitAmount(500);
+        myAxisAccount.debitAmount(300);
+
+        mySBIAccount.transferAmount(300, myAxisAccount);
+
+      
+        System.out.println(mySBIAccount.miniStatement());
+        System.out.println(myAxisAccount.miniStatement());
+
+        
+        System.out.println("SBI Fixed Rate of Interest: " + mySBIAccount.getFixedRateOfInterest() + "%");
+        System.out.println("Axis Fixed Rate of Interest: " + myAxisAccount.getFixedRateOfInterest() + "%");
+    }
+}
