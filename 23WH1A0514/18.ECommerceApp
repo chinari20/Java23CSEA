@@ -1,1 +1,95 @@
+package cse_514;
+
+public class Product {
+    private int id;
+    private String name;
+    private double price;
+
+    public Product(int id, String name, double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    @Override
+    public String toString() {
+        return "Product ID: " + id + ", Name: " + name + ", Price: $" + price;
+    }
+}
+package cse_514;
+
+import java.util.HashSet;
+
+public class Seller {
+    private HashSet<Product> products;
+
+    public Seller() {
+        this.products = new HashSet<>();
+    }
+
+    public void addProduct(Product product) {
+        products.add(product);
+    }
+
+    public HashSet<Product> getProducts() {
+        return products;
+    }
+}
+package cse_514;
+
+import java.util.HashSet;
+
+public class Customer {
+    public double calculateTotalPrice(HashSet<Product> orderedProducts, HashSet<Product> availableProducts) {
+        double totalPrice = 0.0;
+
+        for (Product orderedProduct : orderedProducts) {
+            for (Product availableProduct : availableProducts) {
+                if (orderedProduct.getId() == availableProduct.getId()) {
+                    System.out.println("Ordered: " + availableProduct);
+                    totalPrice += availableProduct.getPrice();
+                }
+            }
+        }
+
+        return totalPrice;
+    }
+}
+package cse_514;
+
+import java.util.HashSet;
+
+public class ECommerceApp {
+    public static void main(String[] args) {
+        Seller seller = new Seller();
+
+        // Adding products
+        seller.addProduct(new Product(1, "Laptop", 999.99));
+        seller.addProduct(new Product(2, "Smartphone", 499.99));
+        seller.addProduct(new Product(3, "Headphones", 199.99));
+
+        // Simulating a customer order
+        HashSet<Product> orderedProducts = new HashSet<>();
+        orderedProducts.add(new Product(1, "Laptop", 999.99)); // Order for Laptop
+        orderedProducts.add(new Product(3, "Headphones", 199.99)); // Order for Headphones
+
+        // Customer calculating total price
+        Customer customer = new Customer();
+        double totalPrice = customer.calculateTotalPrice(orderedProducts, seller.getProducts());
+
+        System.out.printf("Total Price of Ordered Products: $%.2f%n", totalPrice);
+    }
+}
 
