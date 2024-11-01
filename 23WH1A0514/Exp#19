@@ -1,1 +1,72 @@
+package cse_514;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class PhoneBook {
+    private Map<String, String> nameToPhoneMap;
+    private Map<String, String> phoneToNameMap;
+
+    public PhoneBook(String filename) {
+        nameToPhoneMap = new HashMap<>();
+        phoneToNameMap = new HashMap<>();
+        loadPhoneBook(filename);
+    }
+
+    private void loadPhoneBook(String filename) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("\t");
+                if (parts.length == 2) {
+                    String name = parts[0].trim();
+                    String phoneNumber = parts[1].trim();
+                    nameToPhoneMap.put(name, phoneNumber);
+                    phoneToNameMap.put(phoneNumber, name);
+                } else {
+                    System.err.println("Invalid record format: " + line);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+        }
+    }
+
+    public String getPhoneNumber(String name) {
+        return nameToPhoneMap.get(name);
+    }
+
+    public String getName(String phoneNumber) {
+        return phoneToNameMap.get(phoneNumber);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        PhoneBook phoneBook = new PhoneBook("contacts.txt");
+
+        System.out.println("Enter a name or phone number (type 'exit' to quit):");
+        while (true) {
+            String input = scanner.nextLine().trim();
+            if (input.equalsIgnoreCase("exit")) {
+                break;
+            }
+
+            String result;
+            if (phoneBook.nameToPhoneMap.containsKey(input)) {
+                result = phoneBook.getPhoneNumber(input);
+                System.out.println("Phone number for " + input + ": " + result);
+            } else if (phoneBook.phoneToNameMap.containsKey(input)) {
+                result = phoneBook.getName(input);
+                System.out.println("Name for phone number " + input + ": " + result);
+            } else {
+                System.out.println("No record found for: " + input);
+            }
+        }
+
+        scanner.close();
+    }
+}
 
