@@ -1,0 +1,96 @@
+package Lab_practicejava;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Scanner;
+
+public class ECommerce {
+	public static void main(String args[])
+	{
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Enter the number of Products you want to add: ");
+		int noOfProducts = scanner.nextInt();
+		int i;
+		HashSet<Product> productsSet = new HashSet<Product>();
+		for(i=0;i<noOfProducts;i++)
+		{
+			Product product = new Product();
+			System.out.println("Enter Product ID : ");
+			product.setID(scanner.nextInt());
+			
+			System.out.println("Enter Product Name : ");
+			product.setName(scanner.next());
+			
+			System.out.println("Enter Product Price : ");
+			product.setPrice(scanner.nextDouble());
+			
+			productsSet.add(product);  //Adding Product Object to Set
+			
+			
+		}
+		//Use Iterator to Extract Data
+		Iterator iterator = productsSet.iterator();
+		while(iterator.hasNext())
+		{
+			Product product = (Product) iterator.next();
+			System.out.println(product.getID() + "\t" + product.getName() + "\t" + product.getPrice());
+		}
+	}
+
+}
+
+package Lab_practicejava;
+
+public class Product {
+	private int ID;
+	private String Name;
+	private double Price;
+	
+	
+	public int getID() {
+		return ID;
+	}
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
+	public String getName() {
+		return Name;
+	}
+
+	public void setName(String name) {
+		Name = name;
+	}
+
+	public double getPrice() {
+		return Price;
+	}
+
+	public void setPrice(double price) {
+		Price = price;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+
+Output:
+Enter the number of Products you want to add: 2
+Enter Product ID : 
+1
+Enter Product Name : 
+Milk
+Enter Product Price : 
+50
+Enter Product ID : 
+2
+Enter Product Name : 
+Coffee
+Enter Product Price : 
+20
+2	Coffee	20.0
+1	Milk	50.0
