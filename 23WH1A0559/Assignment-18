@@ -1,0 +1,221 @@
+package cse559;
+
+import java.util.Collection;
+
+//Assignment 18: (e-commerce application)  Seller: Add  Products (id,name and price) bean  into HashSet. 
+
+//Customer:If any products ordered by customer, compare with the data stored and display the total price along with the details of product.(Use bean and client classes)
+
+import java.util.HashSet;
+
+import java.util.Scanner;
+
+import java.util.Objects;
+
+//product bean class-Example for Encapsulation
+
+class product{
+
+	private int id;
+
+	private String name;
+
+	private double price;
+
+
+
+public product(int id,String name,double price){
+
+	this.id = id;
+
+	this.name = name;
+
+	this.price = price;
+
+	
+
+}
+public int getid() {
+
+	return id;
+
+}
+public void setid(int id) {
+
+	this.id = id;
+
+}
+public String getname() {
+
+	return name;
+
+}
+public void setname(String name) {
+
+	this.name = name;
+
+}
+public double getprice() {
+
+	return price;
+
+}
+public void setprice(double price) {
+
+	this.price = price;
+
+}
+@override
+
+public boolean equals(Object o) {
+
+	if(this == o) return true;
+
+	if(o==null || getClass() != o.getClass())   return false;
+
+	product product = (product)o;
+
+	return id == product.id;
+
+}
+
+@override
+
+public int hashcode() {
+
+	return Objects.hash(id);
+
+	
+
+}
+
+@override
+
+public String toString() {
+
+	return "Product ID: " + id + ", Name:" + name + ", Price: "+price;
+}
+
+}
+
+//seller class
+
+class seller{
+
+	 private HashSet<product> products = new HashSet<>();
+
+public void addproduct(product product) {
+
+	if(products.add(product)) {
+
+		System.out.println("Product added:"+product);
+
+	}
+
+	else {
+
+		System.out.println("Product with ID"+product.getid()+"already exists");
+
+	}
+
+}
+
+public HashSet<product> getproducts(){
+
+	return products;
+
+} 
+ }//customer class
+
+class customer{
+
+	public void orderProducts(HashSet<product> products,int[] productids) {
+
+		double totalprice = 0;
+
+		System.out.println("Ordered Products.");
+
+		for(int id:productids) {
+
+			boolean productFound = false;
+
+			for(product product:products) {
+
+			if(product.getid() == id) {
+
+				System.out.println(product);
+
+				totalprice += product.getprice();
+
+				productFound = true;
+
+				break;
+
+			}
+
+			}
+
+			if(!productFound) {
+
+				System.out.println("Product with ID"+id+"not Found");
+
+			}
+
+		}
+
+		System.out.println("Total Price:"+totalprice);
+
+	}
+
+}
+
+//client(Main) class
+
+public class ECommerceApplication {
+
+ public static void main(String[] args) {
+
+	 Scanner sc = new Scanner(System.in);
+
+	 seller seller = new seller();
+
+	 customer customer = new customer();
+
+//seller adding products
+
+	 System.out.println("Seller:Adding Products");
+
+	 seller.addproduct(new product(1,"Phone",459.00));
+
+	 seller.addproduct(new product(2,"smartPhone",859.00));
+
+	 seller.addproduct(new product(2,"smartPhone",559.00));
+
+	 seller.addproduct(new product(3,"Laptop",11459.00));
+
+//customer ordering products
+
+	 System.out.println("\nCustomer: Ordering Products");
+
+     System.out.print("Enter the number of products to order: ");
+
+     int numProducts = sc.nextInt();
+
+     int[] productids = new int[numProducts];
+
+     System.out.println("Enter product IDs to Order:");
+
+     for(int i=0;i<numProducts;i++) {
+
+    	 productids[i] = sc.nextInt();
+
+     }
+
+     customer.orderProducts(seller.getproducts(),productids);
+
+     sc.close();
+}
+}
+
+
+
