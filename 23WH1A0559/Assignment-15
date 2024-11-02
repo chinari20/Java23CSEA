@@ -1,0 +1,88 @@
+package cse559;
+
+import java.util.Scanner;
+
+class ATMPINValidatorException extends RuntimeException{
+
+	public ATMPINValidatorException() {
+
+		System.out.println("Sorry..Your Account Has been Locked");
+
+	}
+
+}
+
+public class ATMApplication {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Enter the Account Holder Name:");
+
+		String AccountHolderName = sc.nextLine();
+
+		System.out.println("Enter the PIN:");
+
+		int pin_no = sc.nextInt();
+
+		System.out.println("Enter the Correct PIN:");
+
+		int trypin = sc.nextInt();
+
+		for(int i=1;i<3;i++) {
+
+			if(trypin == pin_no) {
+
+				break;
+
+			}
+
+			else {
+
+				System.out.println("Enter the Correct pin:");
+
+				trypin = sc.nextInt();
+
+			}
+
+		} Mypin(trypin,pin_no);
+
+		
+
+	}static void Mypin(int trypin, int pin_no)  throws ATMPINValidatorException {
+
+		// TODO Auto-generated method stub
+
+		Checkpin(trypin,pin_no);
+
+	}
+
+
+
+	static void Checkpin(int trypin, int pin_no) {
+
+		// TODO Auto-generated method stub
+
+		if(trypin != pin_no) {
+
+			throw new ATMPINValidatorException();
+
+		}
+
+		else {
+
+			System.out.println("Entered Correct pin Number.");
+
+		}
+
+		
+
+	}
+
+}
+
+
+
+
+
