@@ -1,0 +1,72 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+class Buffer {
+    private static final int MAX_SIZE = 10; // Maximum size of the buffer
+    private final Queue<Integer> queue = new LinkedList<>();
+    public synchronized void produce(int item) throws InterruptedException {
+        while (queue.size() == MAX_SIZE) {
+            System.out.println("Buffer is full. Producer is waiting...");
+            wait();
+        }
+        queue.add(item);
+        System.out.println("Produced: " + item);
+        notify();
+    }
+    public synchronized int consume() throws InterruptedException {
+        while (queue.isEmpty()) {
+            System.out.println("Buffer is empty. Consumer is waiting...");
+            wait(); 
+        }
+        int item = queue.remove();
+        System.out.println("Consumed: " + item);
+        notify();
+        return item;
+    }
+}
+
+class Producer extends Thread {
+    private final Buffer buffer;
+
+    public Producer(Buffer buffer) {
+        this.buffer = buffer;
+  }
+    public void run() {
+        try {
+            for (int i = 0; i < 20; i++) {
+                buffer.produce(i);
+                Thread.sleep(1000);
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+}
+
+class Consumer extends Thread {
+    private final Buffer buffer;
+
+    public Consumer(Buffer buffer) {
+        this.buffer = buffer;
+    }
+    public void run() {
+        try {
+            for (int i = 0; i < 20; i++) {
+                buffer.consume();
+                Thread.sleep(1500); 
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt(); 
+        }
+    }
+}
+
+public class ProducerConsumer {
+    public static void main(String[] args) {
+        Buffer buffer = new Buffer(); 
+        Producer producer = new Producer(buffer); 
+        Consumer consumer = new Consumer(buffer); 
+        producer.start();
+        consumer.start();
+    }
+}
