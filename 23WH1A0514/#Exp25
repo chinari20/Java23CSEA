@@ -1,0 +1,69 @@
+package cse_530;
+
+	import javax.swing.*;
+	import java.awt.event.ActionListener;
+	import java.awt.event.ActionEvent;
+	import java.awt.*;
+	public class traffic_light_stimulation {
+	   public static void main(String[] args) {
+	     
+	       JFrame f = new JFrame("Traffic");
+	       f.setSize(400, 600);
+	       f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	       f.setLayout(null);
+	       f.getContentPane().setBackground(Color.WHITE);
+	       JLabel message = new JLabel("");
+	       message.setBounds(30, 10, 300, 25);
+	       message.setForeground(Color.BLACK);  
+	       f.add(message);
+	       
+	       JLabel color = new JLabel("Choose light color:");
+	       color.setBounds(30, 30, 200, 25);
+	       color.setForeground(Color.BLACK);  
+	       f.add(color);
+	       
+	       JRadioButton red = new JRadioButton("Red");
+	       red.setBounds(30, 60, 100, 25);
+	       red.setForeground(Color.BLACK);
+	     
+	       JRadioButton yellow = new JRadioButton("Yellow");
+	       yellow.setBounds(30, 90, 100, 25);
+	       yellow.setForeground(Color.BLACK);
+	     
+	       JRadioButton green = new JRadioButton("Green");
+	       green.setBounds(30, 120, 100, 25);
+	       green.setForeground(Color.BLACK);
+	       
+	       ButtonGroup group = new ButtonGroup();
+	       group.add(red);
+	       group.add(yellow);
+	       group.add(green);
+	     
+	       f.add(red);
+	       f.add(yellow);
+	       f.add(green);
+	       
+	       red.addActionListener(new ActionListener() {
+	           public void actionPerformed(ActionEvent e) {
+	               message.setText("Stop");
+	               message.setForeground(Color.RED);  
+	           }
+	       });
+	     
+	       yellow.addActionListener(new ActionListener() {
+	           public void actionPerformed(ActionEvent e) {
+	               message.setText("Get Ready");
+	               message.setForeground(Color.YELLOW);  
+	           }
+	       });
+	       
+	       green.addActionListener(new ActionListener() {
+	           public void actionPerformed(ActionEvent e) {
+	               message.setText("Go");
+	               message.setForeground(Color.GREEN);  
+	           }
+	       });
+	     
+	       f.setVisible(true);
+	   }
+	}
