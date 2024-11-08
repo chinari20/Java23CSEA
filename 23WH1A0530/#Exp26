@@ -1,0 +1,46 @@
+package cse_530;
+import java.awt.*;
+import java.awt.event.*;
+
+public class WordCharacterCounter extends Frame implements ActionListener {
+    private TextArea textArea;
+    private Button countButton;
+    private Label resultLabel;
+    
+    public WordCharacterCounter() {
+        setTitle("Word and Character Counter");
+        setSize(400, 300);
+        setLayout(new FlowLayout());
+        textArea = new TextArea(10, 30);
+        countButton = new Button("Count Words and Characters");
+        resultLabel = new Label("Words: 0, Characters: 0");
+        add(textArea);
+        add(countButton);
+        add(resultLabel);
+        countButton.addActionListener(this);
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent we) {
+                System.exit(0);
+            }
+        });
+        setVisible(true);
+    }
+    public void actionPerformed(ActionEvent e) {
+        String text = textArea.getText();
+        int wordCount = countWords(text);
+        int charCount = text.length();
+        resultLabel.setText("Words: " + wordCount + ", Characters: " + charCount);
+    }
+    private int countWords(String text) {
+        String trimmedText = text.trim();
+        if (trimmedText.isEmpty()) {
+            return 0;
+        }
+        String[] words = trimmedText.split("\\s+");
+        return words.length;
+    }
+    public static void main(String[] args) {
+        new WordCharacterCounter();
+    }
+}
+
