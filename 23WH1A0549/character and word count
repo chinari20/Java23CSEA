@@ -1,0 +1,84 @@
+package javap;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+
+public class Passage extends JFrame implements ActionListener {
+    
+    JTextArea t1;
+    JButton b1, b2;
+    JTextField tf1, tf2;
+
+    public Passage() {
+        // Setting up the frame
+        JFrame frame = new JFrame();
+        frame.setTitle("Character and Word Counter");
+
+        // Initialize JTextArea for input text
+        t1 = new JTextArea();
+        t1.setBounds(100, 100, 250, 100);  // Adjust size and position
+        t1.setLineWrap(true);               // To wrap text when it exceeds the width
+        t1.setWrapStyleWord(true);          // To wrap at word boundaries
+
+        // Button for counting characters
+        b1 = new JButton("No. of characters");
+        b1.setBounds(100, 220, 150, 30);
+        
+        // Button for counting words
+        b2 = new JButton("No. of words");
+        b2.setBounds(100, 260, 150, 30);
+        
+        // Text fields to display the results
+        tf1 = new JTextField();
+        tf1.setBounds(260, 220, 100, 30);  // For character count
+        tf2 = new JTextField();
+        tf2.setBounds(260, 260, 100, 30);  // For word count
+        
+        // Adding components to the frame
+        frame.add(t1);
+        frame.add(b1);
+        frame.add(b2);
+        frame.add(tf1);
+        frame.add(tf2);
+
+        // Set layout to null for absolute positioning
+        frame.setLayout(null);
+
+        // Add action listeners to buttons
+        b1.addActionListener(this);
+        b2.addActionListener(this);
+
+        // Frame settings
+        frame.setSize(500, 400);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public static void main(String[] args) {
+        new Passage();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // Get the text from the JTextArea
+        String text = t1.getText().trim();
+        
+        // Check which button was pressed
+        if (e.getSource() == b1) { // For character count
+            // Count characters (including spaces)
+            int characterCount = text.length();
+            tf1.setText(String.valueOf(characterCount));
+        } 
+        else if (e.getSource() == b2) { // For word count
+            // Split the text by whitespace and count words
+            if (text.isEmpty()) {
+                tf2.setText("0");
+            } else {
+                String[] words = text.split("\\s+");
+                int wordCount = words.length;
+                tf2.setText(String.valueOf(wordCount));
+            }
+        }
+    }
+}
