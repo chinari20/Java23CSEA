@@ -1,0 +1,79 @@
+package javap;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class TrafficLightSimulator {
+
+    public static void main(String[] args) {
+        // Create a JFrame (window)
+        JFrame frame = new JFrame("Traffic Light Simulator");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300, 200);
+        
+        // Create a panel with FlowLayout for simple left-to-right arrangement
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout());
+        
+        // Create the radio buttons for the lights
+        JRadioButton redButton = new JRadioButton("Red Light");
+        JRadioButton yellowButton = new JRadioButton("Yellow Light");
+        JRadioButton greenButton = new JRadioButton("Green Light");
+        
+        // Group the radio buttons to ensure only one can be selected at a time
+        ButtonGroup group = new ButtonGroup();
+        group.add(redButton);
+        group.add(yellowButton);
+        group.add(greenButton);
+        
+        // Create a JLabel to display the message
+        JLabel messageLabel = new JLabel();
+        messageLabel.setHorizontalAlignment(JLabel.CENTER);
+        messageLabel.setPreferredSize(new Dimension(250, 30));
+        
+        // Set the default background color of the message label
+        messageLabel.setOpaque(true);
+        messageLabel.setBackground(Color.WHITE);
+      //  messageLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        // Add ActionListeners to the radio buttons
+        redButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                messageLabel.setText("Stop");
+                messageLabel.setForeground(Color.RED);
+                messageLabel.setBackground(Color.black); // Set white background for red
+            }
+        });
+        
+        yellowButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                messageLabel.setText("Ready");
+                messageLabel.setForeground(Color.YELLOW);
+                messageLabel.setBackground(Color.BLACK); // Set black background for yellow text
+            }
+        });
+        
+        greenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                messageLabel.setText("Go");
+                messageLabel.setForeground(Color.GREEN);
+                messageLabel.setBackground(Color.black); // Set white background for green
+            }
+        });
+        
+        // Add components to the panel
+        panel.add(messageLabel);
+        panel.add(redButton);
+        panel.add(yellowButton);
+        panel.add(greenButton);
+        
+        // Add the panel to the frame
+        frame.add(panel);
+        
+        // Make the frame visible
+        frame.setVisible(true);
+    }
+}
