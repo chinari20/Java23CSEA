@@ -1,0 +1,85 @@
+package rec;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.*;
+
+public class Trafficlight {
+
+    public static void main(String[] args) {
+        // Create the JFrame (traffic light simulation)
+        JFrame f = new JFrame("Traffic");
+        f.setSize(400, 600);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setLayout(null); // Use null layout for absolute positioning
+
+        // Set background color of the frame to white
+        f.getContentPane().setBackground(Color.WHITE);
+        JLabel message = new JLabel("");
+        message.setBounds(30, 10, 300, 25);
+        message.setForeground(Color.BLACK);  // Set default text color to black
+        f.add(message);
+
+        // Create a label for color instruction
+        JLabel color = new JLabel("Choose light color:");
+        color.setBounds(30, 30, 200, 25);
+        color.setForeground(Color.BLACK);  // Set text color to black for contrast
+        f.add(color);
+
+        // Create the radio buttons for Red, Yellow, and Green traffic lights
+        JRadioButton red = new JRadioButton("Red");
+        red.setBounds(30, 60, 100, 25);
+        red.setForeground(Color.BLACK);
+       
+        JRadioButton yellow = new JRadioButton("Yellow");
+        yellow.setBounds(30, 90, 100, 25);
+        yellow.setForeground(Color.BLACK);
+       
+        JRadioButton green = new JRadioButton("Green");
+        green.setBounds(30, 120, 100, 25);
+        green.setForeground(Color.BLACK);
+
+        // Group the radio buttons together so only one can be selected at a time
+        ButtonGroup group = new ButtonGroup();
+        group.add(red);
+        group.add(yellow);
+        group.add(green);
+
+        // Add the radio buttons to the frame
+        f.add(red);
+        f.add(yellow);
+        f.add(green);
+
+        // Create a JLabel to display the message when a radio button is selected
+
+        // ActionListener for Red radio button
+        red.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                message.setText("Stop");
+                message.setForeground(Color.RED);  // Change text color to red
+            }
+        });
+
+        // ActionListener for Yellow radio button
+        yellow.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                message.setText("Get Ready");
+                message.setForeground(Color.YELLOW);  // Change text color to yellow
+            }
+        });
+
+        // ActionListener for Green radio button
+        green.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                message.setText("Go");
+                message.setForeground(Color.GREEN);  // Change text color to green
+            }
+        });
+
+        // Make the JFrame visible
+        f.setVisible(true);
+    }
+}
