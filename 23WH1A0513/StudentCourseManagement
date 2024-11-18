@@ -1,0 +1,121 @@
+package rec;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class StudentCourseManagement {
+
+    public static class Course {
+        private int id;
+        private String name;
+        private double price;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+
+        public void setPrice(double price) {
+            this.price = price;
+        }
+    }
+
+    public interface StudentCourse {
+        void addCourse(Course course) throws Exception;
+        Course[] viewCourses() throws Exception;
+        double addFee(Course course) throws Exception;
+    }
+
+    public static class Semester implements StudentCourse {
+        private List<Course> courses = new ArrayList<>();
+
+        @Override
+        public void addCourse(Course course) throws Exception {
+            if (course == null) {
+                throw new Exception("Course cannot be null");
+            }
+            if (course.getPrice() < 1000 || course.getPrice() > 3000) {
+                throw new Exception("Course fee must be between 1000 and 3000");
+            }
+            courses.add(course);
+        }
+
+        @Override
+        public Course[] viewCourses() throws Exception {
+            if (courses.isEmpty()) {
+                throw new Exception("No courses available");
+            }
+            return courses.toArray(new Course[0]);
+        }
+
+        @Override
+        public double addFee(Course course) throws Exception {
+            if (course == null) {
+                throw new Exception("Course cannot be null");
+            }
+            double price = course.getPrice();
+            if (price > 1500) {
+                return price - (price * 0.10);
+            }
+            return price;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Semester semester = new Semester();
+
+        try {
+            System.out.println("Enter the number of courses to add:");
+            int courseCount = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline
+
+            for (int i = 0; i < courseCount; i++) {
+                Course course = new Course();
+                System.out.println("\nEnter details for Course " + (i + 1) + ":");
+
+                System.out.print("ID: ");
+                course.setId(scanner.nextInt());
+                scanner.nextLine(); // Consume the newline
+
+                System.out.print("Name: ");
+                course.setName(scanner.nextLine());
+
+                System.out.print("Price (Fee must be between 1000 and 3000): ");
+                course.setPrice(scanner.nextDouble());
+                scanner.nextLine(); // Consume the newline
+
+                semester.addCourse(course);
+            }
+
+            System.out.println("\nCourses Added:");
+            for (Course course : semester.viewCourses()) {
+                System.out.println("Course ID: " + course.getId());
+                System.out.println("Course Name: " + course.getName());
+                System.out.println("Original Price: " + course.getPrice());
+                System.out.println("Discounted Price: " + semester.addFee(course));
+                System.out.println("-------------------------");
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            scanner.close();
+        }
+    }
+}
+
