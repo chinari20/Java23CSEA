@@ -1,0 +1,120 @@
+package rec;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Scanner;
+public class Ecommerce {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        HashSet<Product> productSet = new HashSet<>();
+        System.out.println("Enter the number of products:");
+        int num = sc.nextInt();
+        for (int i = 0; i < num; i++) {
+            Product product = new Product();
+            System.out.println("Enter the product id:");
+            product.setId(sc.nextInt());
+            System.out.println("Enter the product name:");
+            product.setName(sc.next());
+            System.out.println("Enter the product price:");
+            product.setPrice(sc.nextDouble());
+            productSet.add(product);
+        }
+        Customer customer = new Customer();
+        System.out.println("Enter the number of products you want to order:");
+        int orderCount = sc.nextInt();
+        for (int i = 0; i < orderCount; i++) {
+            System.out.println("Enter product name to order:");
+            String productName = sc.next();
+            boolean found = false;
+           
+            Iterator<Product> iterator = productSet.iterator();
+            while (iterator.hasNext()) {
+                Product product = iterator.next();
+                if (productName.equalsIgnoreCase(product.getName())) {
+                    customer.orderProduct(product);
+                    found = true;
+                    System.out.println("Product ordered: " + product.getName());
+                    break;
+                }
+            }
+           
+            if (!found) {
+                System.out.println("Product with name " + productName + " not found.");
+            }
+        }
+        double totalPrice = customer.calculateTotalPrice();
+        System.out.println("Total Price of ordered products: " + totalPrice);
+       
+        sc.close();
+    }
+}
+class Product {
+    private int id;
+    private String name;
+    private double price;
+    public Product() {}
+    public Product(int id, String name, double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+   
+    public double getPrice() {
+        return price;
+    }
+   
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    // Override equals and hashCode to compare Products correctly
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Product product = (Product) obj;
+        return id == product.id && name.equalsIgnoreCase(product.name);
+    }
+   
+    @Override
+    public int hashCode() {
+        return 31 * id + name.toLowerCase().hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Product ID: " + id + ", Name: " + name + ", Price: " + price;
+    }
+}
+class Customer {
+    private HashSet<Product> orderedProducts;
+    public Customer() {
+        orderedProducts = new HashSet<>();
+    }
+    public void orderProduct(Product product) {
+        orderedProducts.add(product);
+    }
+    public double calculateTotalPrice() {
+        double totalPrice = 0.0;
+        for (Product product : orderedProducts) {
+            totalPrice += product.getPrice();
+        }
+        return totalPrice;
+    }
+
+    // Get ordered products
+    public HashSet<Product> getOrderedProducts() {
+        return orderedProducts;
+    }
+}
