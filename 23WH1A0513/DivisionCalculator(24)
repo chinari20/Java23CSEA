@@ -1,0 +1,150 @@
+package rec;
+import javax.swing.*;
+
+import java.awt.event.ActionEvent;
+
+import java.awt.event.ActionListener;
+
+
+
+public class DivisionCalculator implements ActionListener {
+
+
+
+    // Declare the text fields
+
+    JTextField n1textf, n2textf, rtextf;
+
+
+
+    public void actionPerformed(ActionEvent e) {
+
+        try {
+
+            // Parse the numbers from text fields
+
+            int num1 = Integer.parseInt(n1textf.getText());
+
+            int num2 = Integer.parseInt(n2textf.getText());
+
+
+
+            // Perform the division
+
+            int result = num1 / num2;
+
+
+
+            // Display the result
+
+            rtextf.setText(String.valueOf(result));
+
+        } catch (NumberFormatException ex) {
+
+            // Handle invalid input
+
+            JOptionPane.showMessageDialog(null, "Please enter valid integers.", "Input Error", JOptionPane.ERROR_MESSAGE);
+
+        } catch (ArithmeticException ex) {
+
+            // Handle division by zero
+
+            JOptionPane.showMessageDialog(null, "Division by zero is not allowed.", "Math Error", JOptionPane.ERROR_MESSAGE);
+
+        }
+
+    }
+
+
+
+    public static void main(String[] args) {
+
+        // Create an instance of DivisionCalculator to access instance variables
+
+        DivisionCalculator calculator = new DivisionCalculator();
+
+
+
+        // Create the frame
+
+        JFrame f = new JFrame("Division Calculator");
+
+        f.setSize(500, 500);
+
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        f.setLayout(null);
+
+
+
+        // Create and set up labels and text fields
+
+        JLabel n1label = new JLabel("NUM 1");
+
+        n1label.setBounds(30, 30, 100, 25);
+
+        f.add(n1label);
+
+        
+
+        calculator.n1textf = new JTextField();
+
+        calculator.n1textf.setBounds(140, 30, 200, 25);
+
+        f.add(calculator.n1textf);
+
+
+
+        JLabel n2label = new JLabel("NUM 2");
+
+        n2label.setBounds(30, 60, 100, 25);
+
+        f.add(n2label);
+
+
+
+        calculator.n2textf = new JTextField();
+
+        calculator.n2textf.setBounds(140, 60, 200, 25);
+
+        f.add(calculator.n2textf);
+
+
+
+        JLabel rlabel = new JLabel("Result: ");
+
+        rlabel.setBounds(30, 90, 100, 25);
+
+        f.add(rlabel);
+
+
+
+        calculator.rtextf = new JTextField();
+
+        calculator.rtextf.setBounds(140, 90, 200, 25);
+
+        calculator.rtextf.setEditable(false); // make result field non-editable
+
+        f.add(calculator.rtextf);
+
+
+
+        // Create and set up submit button
+
+        JButton divide = new JButton("Submit");
+
+        divide.setBounds(140, 120, 100, 25);
+
+        divide.addActionListener(calculator); // Add ActionListener
+
+        f.add(divide);
+
+
+
+        // Set frame visible after all components are added
+
+        f.setVisible(true);
+
+    }
+
+}
