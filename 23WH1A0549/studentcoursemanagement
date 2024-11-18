@@ -1,0 +1,162 @@
+//
+public class Course {
+    private int id;
+    private String name;
+    private double price;
+
+    public Course(int id, String name, double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
+    // Getters
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    // Setters
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Course [id=" + id + ", name=" + name + ", price=" + price + "]";
+    }
+}
+//
+public interface StudentCourse {
+    void addCourse(Course course) throws Exception;
+    Course[] viewCourses() throws Exception;
+    double addFee(double fee) throws Exception;
+}
+//
+import java.util.ArrayList;
+import java.util.List;
+
+public class Semester implements StudentCourse {
+    private List<Course> courses;
+
+    public Semester() {
+        courses = new ArrayList<>();
+    }
+
+    @Override
+    public void addCourse(Course course) throws Exception {
+        if (course == null) {
+            throw new Exception("Course cannot be null");
+        }
+        courses.add(course);
+        System.out.println("Course added successfully: " + course);
+    }
+
+    @Override
+    public Course[] viewCourses() throws Exception {
+        if (courses.isEmpty()) {
+            throw new Exception("No courses available to display");
+        }
+        return courses.toArray(new Course[0]);
+    }
+
+    @Override
+    public double addFee(double fee) throws Exception {
+        if (fee < 1000 || fee > 3000) {
+            throw new Exception("Fee must be in the range of 1000 to 3000");
+        }
+
+        if (fee > 1500) {
+            double discount = fee * 0.10;
+            fee = fee - discount;
+            System.out.println("Discount applied! New fee: " + fee);
+        } else {
+            System.out.println("No discount applied. Fee remains: " + fee);
+        }
+
+        return fee;
+    }
+}
+//
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Semester semester = new Semester();
+
+        try {
+            // Menu-driven program
+            while (true) {
+                System.out.println("\n--- Student Course Management ---");
+                System.out.println("1. Add a Course");
+                System.out.println("2. View Courses");
+                System.out.println("3. Add Fee");
+                System.out.println("4. Exit");
+                System.out.print("Enter your choice: ");
+                int choice = scanner.nextInt();
+
+                switch (choice) {
+                    case 1:
+                        // Add a course
+                        System.out.print("Enter Course ID: ");
+                        int id = scanner.nextInt();
+                        scanner.nextLine(); // Consume newline
+                        System.out.print("Enter Course Name: ");
+                        String name = scanner.nextLine();
+                        System.out.print("Enter Course Price: ");
+                        double price = scanner.nextDouble();
+
+                        Course course = new Course(id, name, price);
+                        semester.addCourse(course);
+                        break;
+
+                    case 2:
+                        // View courses
+                        Course[] courses = semester.viewCourses();
+                        System.out.println("Courses:");
+                        for (Course c : courses) {
+                            System.out.println(c);
+                        }
+                        break;
+
+                    case 3:
+                        // Add fee
+                        System.out.print("Enter the fee amount: ");
+                        double fee = scanner.nextDouble();
+                        double finalFee = semester.addFee(fee);
+                        System.out.println("Final fee after processing: " + finalFee);
+                        break;
+
+                    case 4:
+                        // Exit the program
+                        System.out.println("Exiting the program. Goodbye!");
+                        scanner.close();
+                        return;
+
+                    default:
+                        System.out.println("Invalid choice. Please try again.");
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+        } finally {
+            scanner.close();
+        }
+    }
+}
