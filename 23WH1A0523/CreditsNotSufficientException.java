@@ -3,27 +3,36 @@
 
 package javaDemo;
 
-class CreditsNotSufficientException extends RuntimeException{
-	CreditsNotSufficientException(){
-		System.out.println("credits are insufficient plz check..");
+class CreditsNotSufficientException extends RuntimeException {
+	public CreditsNotSufficientException(String message) {
+		super(message);
 	}
 }
-public class Checkcredits {
+public class myCredits{
 	public static void main(String args[]) {
 		try {
-			myCredits(51);
+			System.out.println("checking credits of purchase");
+			checkCredits(30);
 		}
 		catch(CreditsNotSufficientException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
+		try {
+			System.out.println("checking credits for goods");
+			checkCredits(70);
+		}
+		catch(CreditsNotSufficientException e) {
+			System.out.println(e.getMessage());
 		}
 	}
-	static void myCredits(int credits) {
+
+	private static void checkCredits(int credits) {
 		if(credits<=50) {
-			throw new CreditsNotSufficientException();
+			throw new CreditsNotSufficientException("credits are insufficient");
 		}
 		else {
 			System.out.println("credits are sufficient");
 		}
+		
 	}
 }
-
