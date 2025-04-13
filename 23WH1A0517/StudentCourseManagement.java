@@ -1,4 +1,4 @@
-package cse517;
+package cse517; 
 
 //Exception for course management errors
 class CourseManagementException extends Exception {
